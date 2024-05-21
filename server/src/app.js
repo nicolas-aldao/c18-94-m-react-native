@@ -2,6 +2,10 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const router = require('./routes/index')
+
+console.log('router: ', router)
+
 
 const uri = "mongodb+srv://nflorent:contraseña@telemedicinadb.jlrf2ra.mongodb.net/?retryWrites=true&w=majority&appName=telemedicinaDB";
 
@@ -18,6 +22,6 @@ app.use(express.json())
 app.use(cors())
 
 
-app.use("/api", () => {})
+app.use("/api", router)
 
-module.exports = app;
+module.exports = app
