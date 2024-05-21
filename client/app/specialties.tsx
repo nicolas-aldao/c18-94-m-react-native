@@ -1,14 +1,18 @@
+import { useContext } from "react";
+import { StyleSheet } from "react-native";
+import { Link, Stack } from "expo-router";
+import { MedConnectContext } from "@/context";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { Link, Stack } from "expo-router";
-import { StyleSheet } from "react-native";
 
 export default function SpecialtyScreen() {
+    const { user } = useContext(MedConnectContext);
+
     return (
         <>
             <Stack.Screen options={{ title: 'Especialidades' }} />
             <ThemedView style={styles.container}>
-                <ThemedText type="title">Solicitar Turno</ThemedText>
+                <ThemedText type="title">Solicitar Turno para {user.name}</ThemedText>
                 <Link href="/doctors" style={styles.link}>
                     <ThemedText type="link">(Selecciona una especialidad)</ThemedText>
                 </Link>
