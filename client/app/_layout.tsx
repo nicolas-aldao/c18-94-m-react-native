@@ -34,6 +34,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <MedConnectContext.Provider value={{ user, setUser }}>
         <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ header: () => <TopBar title={`Hola, ${user.name}!`} /> }} />
           <Stack.Screen name="profile" options={{ header: () => <TopBar title="Mi Perfil" backArrow /> }} />
           <Stack.Screen name="specialties" options={{ header: () => <TopBar title="Agendá un turno" backArrow /> }} />
