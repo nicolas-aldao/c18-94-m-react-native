@@ -24,9 +24,6 @@ doctorRouter.get('/', async (req, res, next) => {
 	}
 })
 
-
-
-
 // Create a doctor and specialty
 doctorRouter.post('/', async (req, res, next) => {
 	try {
