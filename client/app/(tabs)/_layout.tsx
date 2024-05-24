@@ -1,9 +1,9 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 
-// import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -24,12 +24,42 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="specialties"
         options={{
-          title: 'Explore',
+          title: 'Especialidades',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'medical' : 'medical-outline'} color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="my-medical-history"
+        options={{
+          title: 'Mi historial',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name='menu' color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="my-appointments"
+        options={{
+          title: 'Mis Turnos',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="doctors"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
