@@ -24,7 +24,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="specialties"
+        name="specialties/index"
         options={{
           title: 'Especialidades',
           tabBarIcon: ({ color, focused }) => (
@@ -33,7 +33,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="my-medical-history"
+        name="my-medical-history/index"
         options={{
           title: 'Mi historial',
           tabBarIcon: ({ color, focused }) => (
@@ -42,7 +42,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="my-appointments"
+        name="my-appointments/index"
         options={{
           title: 'Mis Turnos',
           tabBarIcon: ({ color, focused }) => (
@@ -51,13 +51,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="doctors"
+        name="doctors/index"
         options={{
           href: null,
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="profile/index"
         options={{
           href: null,
         }}

@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import { StyleSheet } from "react-native";
 import { MedConnectContext } from "@/context";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/atoms/ThemedText";
 import { TopBar } from "@/components/molecules/TopBar";
+import { CenteredView } from "@/components/containers/CenteredView";
 
 export default function HomeScreen() {
     const { user } = useContext(MedConnectContext);
@@ -11,18 +10,9 @@ export default function HomeScreen() {
     return (
         <>
             <TopBar title="Mi Perfil" backArrow />
-            <ThemedView style={styles.container}>
+            <CenteredView>
                 <ThemedText type="title">{user.name} Profile Screen</ThemedText>
-            </ThemedView>
+            </CenteredView>
         </>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    }
-});

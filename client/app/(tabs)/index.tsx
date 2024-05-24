@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Button, StyleSheet } from "react-native";
 import { MedConnectContext } from "@/context";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { ThemedView } from "@/components/containers/ThemedView";
 import { Link } from "expo-router";
 import { TopBar } from "@/components/molecules/TopBar";
 
