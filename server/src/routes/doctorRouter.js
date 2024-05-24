@@ -5,9 +5,9 @@ const doctorRouter = Router()
 
 // get doctors with filters
 doctorRouter.get('/', async (req, res, next) => {
-	const { specialty, name } = req.query
+	const { specialtyId, name } = req.query
 	try {
-		const foundSpecialty = await Specialty.findOne({ name: specialty })
+		const foundSpecialty = await Specialty.findById( specialtyId )
 		const foundDoctors = await Doctor.find({ specialty: foundSpecialty._id }).populate('specialty').populate('user')
 		if (name) {
 			const filteredDoctors = foundDoctors.filter(doctor => doctor.user.name.toLowerCase() === name.toLowerCase())

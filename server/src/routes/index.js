@@ -7,6 +7,7 @@ const patientRouter = require('./patientRouter');
 const appointmentRouter = require('./appointmentRouter');
 const userRouter = require('./userRouter');
 const availableDateRouter = require('./availableDataRouter');
+const loginRouter = require('./loginRouter');
 
 
 const router = Router();
@@ -16,6 +17,7 @@ const router = Router();
 
 router.use('/patient', patientRouter)
 router.use('/user', userRouter)
+router.use('/login', loginRouter)
 router.use('/specialty', specialtyRouter)
 router.use('/doctor', doctorRouter)
 router.use('/appointment', appointmentRouter)
