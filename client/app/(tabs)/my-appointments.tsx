@@ -11,7 +11,7 @@ export default function SpecialtyScreen() {
 
     return (
         <>
-            <TopBar title="Mi Historial Médico" backArrow />
+            <TopBar title="Mis Turnos" backArrow />
             <ThemedView style={styles.container}>
             </ThemedView>
         </>
