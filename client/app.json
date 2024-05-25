@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "telemed",
+    "name": "medConnect",
     "slug": "telemed",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "nocountry.medConnect"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a4457640-5702-4836-be5d-cb8953e110e6"
+      }
     }
   }
 }

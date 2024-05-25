@@ -1,3 +1,4 @@
+import { Image } from "react-native";
 import styled from "styled-components";
 import { Colors } from "@/constants/Colors";
 import { ThemedView } from "@/components/containers/ThemedView";
@@ -5,6 +6,7 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 
 export const TopBarContainer = styled(ThemedView)`
     flex-direction: column;
+    height: 95px;
 `;
 
 export const FirstRow = styled(ThemedView)`
@@ -21,8 +23,10 @@ export const SecondRow = styled(ThemedView)`
   padding: 12px;
 `;
 
-export const Logo = styled(ThemedText)`
+export const Logo = styled(Image)`
   padding: 3px 0;
+  width: 54px;
+  height: 34px;
 `;
 
 export const ProfileButton = styled(ThemedText)`
