@@ -14,7 +14,7 @@ export const ProfilePictureCircle: FC<ProfilePictureCircleProps> = ({ height, wi
         <View>
             <ImagePicture
                 source={source}
-                style={{ width: width, height: width }}
+                style={{ width: width, height: height }}
             />
         </View>
     )
