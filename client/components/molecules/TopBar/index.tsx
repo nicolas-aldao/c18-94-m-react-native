@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, useNavigation } from "expo-router";
-import { ThemedText } from "@/components/atoms/ThemedText";
-import { ThemedView } from "@/components/containers/ThemedView";
+import { useNavigation } from "expo-router";
 import { Ionicons } from '@expo/vector-icons';
-import { FirstRow, Logo, ProfileButton, SecondRow, TopBarContainer } from "./styles";
+import { ThemedView } from "@/components/containers/ThemedView";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { NameAndPicUser } from "../NameAndPicUser";
+import { FirstRow, Logo, SecondRow, TopBarContainer } from "./styles";
 
 interface TopBarProps {
     title?: string;
@@ -23,10 +24,12 @@ export const TopBar: FC<TopBarProps> = ({ title, backArrow }) => {
         <SafeAreaView>
             <TopBarContainer>
                 <FirstRow>
-                    <Logo>Logo</Logo>
-                    {title !== "Mi Perfil" && <Link href="/profile">
-                        <ProfileButton type="link">Profile</ProfileButton>
-                    </Link>}
+                    <Logo
+                        source={require('../../../assets/images/logo.png')}
+                    />
+                    {title !== "Mi Perfil" &&
+                        <NameAndPicUser name={"John Doe"} profile_pic={'https://randomuser.me/api/portraits/men/44.jpg'} />
+                    }
                 </FirstRow>
                 <SecondRow>
                     {backArrow && <TouchableOpacity onPress={handleBackPress}>
