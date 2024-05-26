@@ -1,5 +1,6 @@
 import axios from "axios";
 import { MedConnectProvider } from "./provider";
+import { responseMiddleware } from "@/middlewares/response";
 import { API_URL } from "@/constants";
 import { Specialty } from "@/types/specialty";
 import { Doctor } from "@/types/doctor";
@@ -7,8 +8,8 @@ import { Doctor } from "@/types/doctor";
 export class WebApiService implements MedConnectProvider {
     getSpecialties = async (): Promise<Specialty[] | undefined> => {
         const res = await axios.get(`${API_URL}/api/specialty`);
-        if (res.data?.data) {
-            return res.data?.data;
+        if (res) {
+            return responseMiddleware(res?.data);
         } else {
             throw new Error("error!");
         }

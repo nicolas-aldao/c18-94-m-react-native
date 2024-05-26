@@ -13,9 +13,9 @@ export default function SpecialtyScreen() {
         <>
             <TopBar title="Agendá un turno" backArrow />
             <CenteredView>
-                {errorMessage && <ThemedText>Error: {errorMessage}</ThemedText>}
+                {errorMessage && <ThemedText>{errorMessage}</ThemedText>}
                 {isLoading && <ActivityIndicator size="large" color={Colors.light.tint} />}
-                {!isLoading && !errorMessage && (
+                {(!isLoading && !errorMessage) && (
                     <>
                         <ThemedText>Lista de Especialidades:</ThemedText>
                         {specialties?.length > 0 && specialties?.map((specialty, index) => (

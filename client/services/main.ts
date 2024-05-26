@@ -1,7 +1,8 @@
-// Acá podemos configurar si consumimos el servicio o el mock, dejar comentado lo que no se usa
-
-// import { WebApiService } from "./api";
+// Acá podemos configurar si consumimos el servicio o el mock
+import { MedConnectService } from "@/services/medConnectService";
+import { WebApiService } from "./api";
 import { MockService } from "./mock";
 
-// export const provider = new WebApiService();
-export const provider = new MockService();
+const USE_MOCK = false;
+const provider = USE_MOCK ? new MockService() : new WebApiService();
+export const medConnectService = new MedConnectService(provider)
