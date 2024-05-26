@@ -1,16 +1,19 @@
 import { MedConnectProvider } from "./provider";
+import { responseMiddleware } from "@/middlewares/response";
 import { Specialty } from "@/types/specialty";
 import { Doctor } from "@/types/doctor";
 
+// Este archivo es un servicio simulado que vamos a usar cuando no podamos usar el backend
+// No borrar los comentarios de las distintas respuestas con los distintos código de error
 export class MockService implements MedConnectProvider {
     wait = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 2500));
+        await new Promise((resolve) => setTimeout(resolve, 4000));
     };
 
     getSpecialties = async (): Promise<Specialty[] | undefined> => {
         await this.wait();
         const res = {
-            request: { status: 200 },
+            status: 200,
             data: [
                 {
                     _id: "1",
@@ -20,10 +23,18 @@ export class MockService implements MedConnectProvider {
                     _id: "2",
                     name: "Medico Clínico",
                 },
+                {
+                    _id: "3",
+                    name: "Odontología",
+                },
             ],
         };
-        return res.data;
-        // throw new Error("Error!");
+        // const res = {
+        //     status: 500,
+        //     data: [],
+        // };
+
+        return responseMiddleware(res);
     };
 
     getDoctorsByIdSpecialty = async (id: string): Promise<Doctor[] | undefined> => {
@@ -40,6 +51,5 @@ export class MockService implements MedConnectProvider {
                 specialtyId: "1",
             },
         ];
-        // throw new Error("Error!");
     };
 }
