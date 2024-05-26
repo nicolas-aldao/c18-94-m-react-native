@@ -4,24 +4,29 @@ import { Doctor } from "@/types/doctor";
 
 export class MockService implements MedConnectProvider {
     wait = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 2500));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
     };
 
     getSpecialties = async (): Promise<Specialty[] | undefined> => {
         await this.wait();
+        // const res = {
+        //     request: { status: 200 },
+        //     data: [
+        //         {
+        //             _id: "1",
+        //             name: "Pediatria",
+        //         },
+        //         {
+        //             _id: "2",
+        //             name: "Medico Clínico",
+        //         },
+        //     ],
+        // };
         const res = {
-            request: { status: 200 },
-            data: [
-                {
-                    _id: "1",
-                    name: "Pediatria",
-                },
-                {
-                    _id: "2",
-                    name: "Medico Clínico",
-                },
-            ],
+            request: { status: 500 },
+            data: [],
         };
+
         return res.data;
         // throw new Error("Error!");
     };
