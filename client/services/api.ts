@@ -7,11 +7,19 @@ import { Doctor } from "@/types/doctor";
 
 export class WebApiService implements MedConnectProvider {
     getSpecialties = async (): Promise<Specialty[] | undefined> => {
-        const res = await axios.get(`${API_URL}/api/specialty`);
-        if (res) {
-            return responseMiddleware(res?.data);
-        } else {
-            throw new Error("error!");
+        try {
+            const res = await axios.get(`${API_URL}/api/specialty`);
+            if (res) {
+                return responseMiddleware(res?.data);
+            } else {
+                throw new Error("error!");
+            }
+        } catch (err: any) {
+            if (err.message === "Network Error") {
+                throw new Error("Error de configuración de Axios, revisar ip o archivo constants");
+            } else {
+                throw new Error("Error!");
+            }
         }
     };
 
@@ -25,4 +33,5 @@ export class WebApiService implements MedConnectProvider {
         // }
         return;
     };
+
 }
