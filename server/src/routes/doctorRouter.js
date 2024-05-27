@@ -36,7 +36,9 @@ doctorRouter.post('/', async (req, res, next) => {
 			birthDate,
 			gender,
 			nationality,
-			specialty
+			specialtyId,
+			hours
+
 		} = req.body;
 
 		if (!specialty) {
@@ -44,7 +46,7 @@ doctorRouter.post('/', async (req, res, next) => {
 		}
 
 		// Encontrar la especialidad por nombre
-		const foundSpecialty = await Specialty.findOne({ name: specialty });
+		const foundSpecialty = await Specialty.findById(specialtyId);
 
 		if (!foundSpecialty) {
 			return res.status(404).json({ error: 'Specialty not found' });
