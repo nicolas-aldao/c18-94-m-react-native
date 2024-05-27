@@ -1,6 +1,6 @@
 import { Image } from "react-native";
 import styled from "styled-components";
-import { Colors } from "@/constants/Colors";
+import { Colors } from "@/constants/Styles";
 import { ThemedView } from "@/components/containers/ThemedView";
 import { ThemedText } from "@/components/atoms/ThemedText";
 
