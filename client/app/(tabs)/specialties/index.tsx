@@ -5,9 +5,10 @@ import { Colors } from "@/constants/Colors";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { TopBar } from "@/components/molecules/TopBar";
 import { CenteredView } from "@/components/containers/CenteredView";
+import { Specialty } from "@/types/specialty";
 
 export default function SpecialtyScreen() {
-    const { specialties, isLoading, errorMessage } = useFetch();
+    const { data: specialties, isLoading, errorMessage } = useFetch({ serviceMethod: 'getSpecialties', initialData: [] });
 
     return (
         <>
@@ -18,7 +19,7 @@ export default function SpecialtyScreen() {
                 {(!isLoading && !errorMessage) && (
                     <>
                         <ThemedText>Lista de Especialidades:</ThemedText>
-                        {specialties?.length > 0 && specialties?.map((specialty, index) => (
+                        {specialties?.length > 0 && specialties?.map((specialty: Specialty, index: string) => (
                             <ThemedText key={index} >{specialty.name}</ThemedText>
                         ))}
                         {specialties?.length === 0 && <ThemedText>Aún no hay información</ThemedText>}

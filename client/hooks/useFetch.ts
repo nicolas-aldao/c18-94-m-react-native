@@ -1,9 +1,22 @@
-import { useEffect, useState } from "react";
-import { medConnectService } from "@/services/main";
-import { Specialty } from "@/types/specialty";
+import { useState, useEffect } from 'react';
+import { AxiosError } from 'axios';
+import { medConnectService } from '@/services/main';
 
-export const useFetch = () => {
-    const [specialties, setSpecialties] = useState<Specialty[]>([]);
+interface ApiResponse<T> {
+    data: T;
+    isLoading: boolean;
+    errorMessage?: string;
+}
+
+type useFetchOptions = {
+    serviceMethod: keyof typeof medConnectService;
+    initialData?: any;
+    param?: any;
+    body?: any;
+};
+
+export const useFetch = <T>({ serviceMethod, param, body, initialData = [] }: useFetchOptions): ApiResponse<T> => {
+    const [data, setData] = useState<any | undefined>(initialData);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<string | undefined>(
         undefined
@@ -11,11 +24,17 @@ export const useFetch = () => {
 
     const fetchData = async () => {
         try {
-            await medConnectService.getSpecialties()
-                .then(items => setSpecialties(items));
-            return;
-        } catch (err: any) {
-            setErrorMessage(err.message);
+            const response = await medConnectService[serviceMethod](param);
+            setData(response);
+        } catch (error) {
+            const axiosError = error as AxiosError;
+            if (axiosError.response) {
+                setErrorMessage(`Error ${axiosError.response.status}: ${axiosError.response.data}`);
+            } else if (axiosError.request) {
+                setErrorMessage('No se pudo realizar la solicitud');
+            } else {
+                setErrorMessage('Error de configuración');
+            }
         } finally {
             setIsLoading(false);
         }
@@ -23,7 +42,9 @@ export const useFetch = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [
+        serviceMethod,
+        body]);
 
-    return { specialties, isLoading, errorMessage };
-};
+    return { data: data!, isLoading, errorMessage };
+}
