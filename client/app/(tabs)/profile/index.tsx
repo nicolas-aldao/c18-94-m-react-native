@@ -4,7 +4,7 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 import { TopBar } from "@/components/molecules/TopBar";
 import { CenteredView } from "@/components/containers/CenteredView";
 
-export default function HomeScreen() {
+export default function ProfileScreen() {
     const { user } = useContext(MedConnectContext);
 
     return (
