@@ -1,26 +1,28 @@
 import { Image } from "react-native";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Colors } from "@/constants/Styles";
 import { ThemedView } from "@/components/containers/ThemedView";
 import { ThemedText } from "@/components/atoms/ThemedText";
 
 export const TopBarContainer = styled(ThemedView)`
     flex-direction: column;
-    height: 95px;
+    height: 115px;
 `;
 
-export const FirstRow = styled(ThemedView)`
-  padding: 0 20px;
+const sharedStyles = css`
   background-color: ${Colors.light.gray};
   flex-direction: row;
   justify-content: space-between;
   padding: 12px;
 `;
 
+export const FirstRow = styled(ThemedView)`
+  padding: 0 20px;
+  ${sharedStyles}
+`;
+
 export const SecondRow = styled(ThemedView)`
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 12px;
+  ${sharedStyles}
 `;
 
 export const Logo = styled(Image)`

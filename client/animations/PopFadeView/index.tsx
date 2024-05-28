@@ -1,16 +1,16 @@
 import React, { FC, ReactNode } from 'react';
-import { StyledAnimatedView } from './styles';
+import { View } from "moti";
 
-interface AnimatedViewProps {
+interface PopFadeViewProps {
     children: ReactNode;
 }
 
-export const AnimatedView: FC<AnimatedViewProps> = ({ children }) => {
+export const PopFadeView: FC<PopFadeViewProps> = ({ children }) => {
     return (
-        <StyledAnimatedView
+        <View
             from={{
                 opacity: 0,
-                scale: 0.3,
+                scale: 0.6,
             }}
             animate={{
                 opacity: 1,
@@ -26,6 +26,6 @@ export const AnimatedView: FC<AnimatedViewProps> = ({ children }) => {
             }}
         >
             {children}
-        </StyledAnimatedView>
+        </View>
     );
 }
