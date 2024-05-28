@@ -1,11 +1,11 @@
 
 import React, { FC } from "react";
-import { Button, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { ProfilePictureCircle } from "@/components/atoms/ProfilePictureCircle";
-import { ButtonSection, FirstColumn, RowContainer, SecondColumn } from "./styles";
 import { RoundedPrimaryButton } from "@/components/atoms/RoundedPrimaryButton";
 import { RoundedLittleGrayButton } from "@/components/atoms/RoundedLittleGrayButton";
+import { ButtonSection, FirstColumn, RowContainer, SecondColumn } from "./styles";
 
 interface DoctorItemRowProps {
     image_url: any;
@@ -29,6 +29,5 @@ export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name }) => {
                 </SecondColumn>
             </RowContainer>
         </TouchableOpacity>
-
     )
 }
