@@ -1,11 +1,9 @@
 import { ScrollView } from "react-native";
-import { ThemedText } from "@/components/atoms/ThemedText";
-import { CenteredView } from "@/components/containers/CenteredView";
-import { TopBar } from "@/components/molecules/TopBar";
-import { DoctorItemRow } from "@/components/organisms/DoctorItemRow";
-import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/loading";
-import { DoctorsList } from "@/components/organisms/DoctorsList";
 import { Link } from "expo-router";
+import { CenteredView } from "@/components/containers/CenteredView";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { TopBar } from "@/components/molecules/TopBar";
+import { DoctorsList } from "@/components/organisms/DoctorsList";
 
 export default function DoctorScreen() {
     return (
@@ -13,11 +11,9 @@ export default function DoctorScreen() {
             <TopBar title="Agendá un turno" backArrow />
             <ScrollView>
                 <CenteredView>
-                    {/* <DoctorItemRowSkeleton />
-                <DoctorItemRow name="John Doe" image_url={{ uri: "https://randomuser.me/api/portraits/men/30.jpg" }} /> */}
                     <DoctorsList />
                     <Link href="/">
-                        <ThemedText type="link">(Selecciona un médico)</ThemedText>
+                        <ThemedText>(Selecciona un médico)</ThemedText>
                     </Link>
                 </CenteredView >
             </ScrollView>

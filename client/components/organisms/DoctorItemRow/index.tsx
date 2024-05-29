@@ -20,8 +20,8 @@ export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name }) => {
                     <ProfilePictureCircle height={67} width={67} source={image_url} />
                 </FirstColumn>
                 <SecondColumn>
-                    <ThemedText>{name}</ThemedText>
-                    <ThemedText>Cardiología</ThemedText>
+                    <ThemedText type="doctor-name">{name}</ThemedText>
+                    <ThemedText type="specialty">Cardiología</ThemedText>
                     <ButtonSection>
                         <RoundedLittleGrayButton text="Info" route="/" />
                         <RoundedPrimaryButton text="Sacar turno" route="/" />

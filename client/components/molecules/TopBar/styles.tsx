@@ -23,6 +23,7 @@ export const FirstRow = styled(ThemedView)`
 
 export const SecondRow = styled(ThemedView)`
   ${sharedStyles}
+  align-items: center;
 `;
 
 export const Logo = styled(Image)`

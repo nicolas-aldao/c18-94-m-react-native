@@ -14,7 +14,7 @@ export const RoundedLittleGrayButton: FC<RoundedLittleGrayButtonProps> = ({ text
 
     return (
         <StyledButton activeOpacity={0.8} onPress={() => router.push(route)}>
-            <ThemedText type="font-black-bold-small">{text}</ThemedText>
+            <ThemedText type="little-button">{text}</ThemedText>
         </StyledButton>
     )
 }

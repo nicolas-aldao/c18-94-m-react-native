@@ -27,7 +27,7 @@ export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name }) => {
                     //source={{ uri: 'https://reactnative.dev/img/tiny_logo.png', }}
                     style={{ width: 31, height: 39 }}
                 />
-                <ThemedText type="font-white-small">{name}</ThemedText>
+                <ThemedText type="specialty-box">{name}</ThemedText>
             </LinearGradient>
         </TouchableOpacity>
 
