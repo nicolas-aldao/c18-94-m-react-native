@@ -11,7 +11,7 @@ export const SpecialtiesList = () => {
 
     return (
         <StyledView>
-            <ThemedText>Lista de Especialidades:</ThemedText>
+            <ThemedText type="header-subtitle">Selecciona una especialidad</ThemedText>
             {
                 isLoading &&
                 <ListContainer>

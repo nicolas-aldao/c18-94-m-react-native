@@ -35,7 +35,7 @@ export const TopBar: FC<TopBarProps> = ({ title, backArrow }) => {
                     {backArrow && <TouchableOpacity onPress={handleBackPress}>
                         <Ionicons name="arrow-back" size={24} color="black" />
                     </TouchableOpacity>}
-                    {title && <ThemedText style={backArrow && { marginLeft: -20 }}>
+                    {title && <ThemedText type="headboard" style={backArrow && { marginLeft: -20 }}>
                         {title}
                     </ThemedText>}
                     <ThemedView>

@@ -14,7 +14,7 @@ export default function SpecialtyScreen() {
                 <CenteredView>
                     <SpecialtiesList />
                     <Link href="/doctors">
-                        <ThemedText type="link">(Selecciona una especialidad)</ThemedText>
+                        <ThemedText>(Selecciona una especialidad)</ThemedText>
                     </Link>
                 </CenteredView>
             </ScrollView>
