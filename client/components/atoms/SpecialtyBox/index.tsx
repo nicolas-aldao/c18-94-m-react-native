@@ -30,7 +30,6 @@ export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name }) => {
                 <ThemedText type="specialty-box">{name}</ThemedText>
             </LinearGradient>
         </TouchableOpacity>
-
     )
 }
 

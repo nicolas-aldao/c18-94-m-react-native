@@ -1,5 +1,9 @@
+import { User } from "./user";
+import { Specialty } from "./specialty";
+
 export interface Doctor {
     _id: string;
-    name: string;
-    specialtyId: string;
+    user: User,
+    specialty: Specialty,
+    __v: number
 }

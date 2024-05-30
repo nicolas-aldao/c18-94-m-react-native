@@ -10,9 +10,10 @@ import { ButtonSection, FirstColumn, RowContainer, SecondColumn } from "./styles
 interface DoctorItemRowProps {
     image_url: any;
     name: string;
+    specialty: string;
 }
 
-export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name }) => {
+export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, specialty }) => {
     return (
         <TouchableOpacity activeOpacity={0.8}>
             <RowContainer>
@@ -21,7 +22,7 @@ export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name }) => {
                 </FirstColumn>
                 <SecondColumn>
                     <ThemedText type="doctor-name">{name}</ThemedText>
-                    <ThemedText type="specialty">Cardiología</ThemedText>
+                    <ThemedText type="specialty">{specialty}</ThemedText>
                     <ButtonSection>
                         <RoundedLittleGrayButton text="Info" route="/" />
                         <RoundedPrimaryButton text="Sacar turno" route="/" />

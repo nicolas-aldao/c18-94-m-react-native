@@ -1,29 +1,41 @@
 
+import { useFetch } from "@/hooks/useFetch";
 import { DoctorItemRow } from "../DoctorItemRow";
 import { ListContainer, StyledView, ItemContainer } from "./styles";
+import { DoctorItemRowSkeleton } from "../DoctorItemRow/loading";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { Doctor } from "@/types/doctor";
 
 export const DoctorsList = () => {
-    // const { data: specialties, isLoading, errorMessage } = useFetch({ serviceMethod: 'getSpecialties', initialData: [] });
+    const { data: doctors, isLoading, errorMessage } = useFetch({ serviceMethod: 'getDoctorsByIdSpecialty', initialData: [] });
 
     return (
         <StyledView>
-            {/* {
+            {
                 isLoading &&
-                    <ListContainer>
-                        {[...Array(9)].map((_, index) =>
-                            (<SpecialtyBoxSkeleton key={index} />))}
-                    </ListContainer>
-            } */}
-            <ListContainer>
-                {[...Array(9)].map((_, index) =>
-                (
-                    <ItemContainer key={index}>
-                        <DoctorItemRow name="John Doe" image_url={{ uri: "https://randomuser.me/api/portraits/men/30.jpg" }} />
-                    </ItemContainer>
-                ))}
-            </ListContainer>
-            {/* {(specialties?.length === 0 && !isLoading) && <ThemedText>Aún no hay información</ThemedText>}
-            {errorMessage && <ThemedText>{errorMessage}</ThemedText>} */}
+                <ListContainer>
+                    {[...Array(9)].map((_, index) =>
+                    (
+                        <ItemContainer key={index}>
+                            <DoctorItemRowSkeleton key={index} />
+                        </ItemContainer>
+                    ))}
+                </ListContainer>
+            }
+            {doctors?.length > 0 &&
+                <ListContainer>
+                    {doctors?.map((doctor: Doctor, index: number) =>
+                    (
+                        <ItemContainer key={index}>
+                            <DoctorItemRow name={doctor.user.name}
+                                image_url={{ uri: doctor.user.profile_pic }}
+                                specialty={doctor.specialty.name} />
+                        </ItemContainer>
+                    ))}
+                </ListContainer>
+            }
+            {(doctors?.length === 0 && !isLoading) && <ThemedText>Aún no hay información</ThemedText>}
+            {errorMessage && <ThemedText>{errorMessage}</ThemedText>}
         </StyledView >
     )
 }
