@@ -6,6 +6,7 @@ import { ProfilePictureCircle } from "@/components/atoms/ProfilePictureCircle";
 import { RoundedPrimaryButton } from "@/components/atoms/RoundedPrimaryButton";
 import { RoundedLittleGrayButton } from "@/components/atoms/RoundedLittleGrayButton";
 import { ButtonSection, FirstColumn, RowContainer, SecondColumn } from "./styles";
+import { useRouter } from "expo-router";
 
 interface DoctorItemRowProps {
     image_url: any;
@@ -14,8 +15,10 @@ interface DoctorItemRowProps {
 }
 
 export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, specialty }) => {
+    const navigation = useRouter();
+
     return (
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push('/calendary')}>
             <RowContainer>
                 <FirstColumn>
                     <ProfilePictureCircle height={67} width={67} source={image_url} />

@@ -4,6 +4,7 @@ import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { getSpecialtyImage } from "@/helpers/image";
 import { ThemedText } from "../ThemedText";
+import { useRouter } from "expo-router";
 
 interface SpecialtyBoxProps {
     image_url: any;
@@ -12,9 +13,10 @@ interface SpecialtyBoxProps {
 
 export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name }) => {
     const specialtyImage = getSpecialtyImage(image_url);
+    const navigation = useRouter();
 
     return (
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push('/doctors')}>
             <LinearGradient
                 colors={['#253332', '#495251']}
                 start={{ x: 0, y: 0 }}

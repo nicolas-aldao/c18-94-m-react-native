@@ -1,19 +1,16 @@
-import { useContext } from "react";
 import { Link } from "expo-router";
-import { MedConnectContext } from "@/context";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { TopBar } from "@/components/molecules/TopBar";
 
-export default function HomeScreen() {
-    const { user } = useContext(MedConnectContext);
-
+export default function CalendaryScreen() {
     return (
         <>
-            <TopBar title={`Hola, ${user.name}!`} />
+            <TopBar title="Agendá tu turno" backArrow />
             <CenteredView>
-                <Link href="/specialties">
-                    <ThemedText>Agendar turno</ThemedText>
+                <ThemedText>Acá elegimos un dia y hora del turno, se ve un calendario y dropdown de horas</ThemedText>
+                <Link href="/motive">
+                    <ThemedText>Ir a pantalla motivo consulta</ThemedText>
                 </Link>
             </CenteredView>
         </>

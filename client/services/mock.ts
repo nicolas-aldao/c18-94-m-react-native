@@ -86,7 +86,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1990-01-01",
                         gender: "male",
                         nationality: "American",
-                        profile_pic: "https://randomuser.me/api/portraits/men/1.jpg",
+                        profile_pic: "https://www.figma.com/component/f60646322e81b0a20c33e12655f56adce131845a/thumbnail?ver=2259%3A571&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -107,7 +107,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1985-02-02",
                         gender: "female",
                         nationality: "British",
-                        profile_pic: "https://randomuser.me/api/portraits/women/2.jpg",
+                        profile_pic: "https://www.figma.com/component/f9d9cf5464062cbc00d20745c56d83cab41f779e/thumbnail?ver=2243%3A551&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -128,7 +128,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1992-03-03",
                         gender: "female",
                         nationality: "Canadian",
-                        profile_pic: "https://randomuser.me/api/portraits/women/3.jpg",
+                        profile_pic: "https://www.figma.com/component/f167518a41e1f2bf689e78b95aa22ba1036703a4/thumbnail?ver=2243%3A565&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -149,7 +149,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1980-04-04",
                         gender: "male",
                         nationality: "Australian",
-                        profile_pic: "https://randomuser.me/api/portraits/men/4.jpg",
+                        profile_pic: "https://www.figma.com/component/84b4a3264661952ea89fc34693afae90f7ae5067/thumbnail?ver=2259%3A574&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -170,7 +170,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1995-05-05",
                         gender: "male",
                         nationality: "Irish",
-                        profile_pic: "https://randomuser.me/api/portraits/men/5.jpg",
+                        profile_pic: "https://www.figma.com/component/c12f5d74260c548aa793491e48148b3eee6993d6/thumbnail?ver=2243%3A536&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -191,7 +191,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1988-06-06",
                         gender: "female",
                         nationality: "Spanish",
-                        profile_pic: "https://randomuser.me/api/portraits/women/6.jpg",
+                        profile_pic: "https://www.figma.com/component/e95f1ee4e1cd6bade5a2f1192032d06e6dd39eda/thumbnail?ver=2243%3A539&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -212,7 +212,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1993-07-07",
                         gender: "female",
                         nationality: "German",
-                        profile_pic: "https://randomuser.me/api/portraits/women/7.jpg",
+                        profile_pic: "https://www.figma.com/component/b5f9408dbf7d39ea3c59e5c575edc4d0687f8ea5/thumbnail?ver=2243%3A542&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -233,7 +233,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1983-08-08",
                         gender: "male",
                         nationality: "French",
-                        profile_pic: "https://randomuser.me/api/portraits/men/8.jpg",
+                        profile_pic: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {
@@ -254,7 +254,7 @@ export class MockService implements MedConnectProvider {
                         birthDate: "1991-09-09",
                         gender: "female",
                         nationality: "Italian",
-                        profile_pic: "https://randomuser.me/api/portraits/women/9.jpg",
+                        profile_pic: "https://www.figma.com/component/49514abdc2d5f8bb79ac3cefd0ac721887902135/thumbnail?ver=2267%3A619&fuid=1375887789832720451",
                         __v: 0,
                     },
                     specialty: {

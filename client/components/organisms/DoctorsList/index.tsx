@@ -11,6 +11,7 @@ export const DoctorsList = () => {
 
     return (
         <StyledView>
+            <ThemedText type="header-subtitle" style={{ marginBottom: 17 }}>Selecciona un especialista en ESPECIALIDAD</ThemedText>
             {
                 isLoading &&
                 <ListContainer>
