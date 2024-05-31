@@ -1,11 +1,11 @@
 import { Text, type TextProps, StyleSheet } from 'react-native';
-
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { Colors, Styles } from '@/constants/Styles';
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'font-white-small';
+  type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'long-paragraph' | 'doctor-name';
 };
 
 export function ThemedText({
@@ -22,11 +22,14 @@ export function ThemedText({
       style={[
         { color },
         type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
-        type === 'font-white-small' ? styles.fontWhiteSmall : undefined, // cajas de especialidades
+        type === 'headboard' ? styles.headboard : undefined,
+        type === 'header-subtitle' ? styles.headerSubtitle : undefined,
+        type === 'onboarding' ? styles.onboarding : undefined,
+        type === 'long-paragraph' ? styles.longParagraphs : undefined,
+        type === 'doctor-name' ? styles.doctorName : undefined,
+        type === 'specialty' ? styles.specialty : undefined,
+        type === 'specialty-box' ? styles.specialtyBox : undefined,
+        type === 'little-button' ? styles.littleButton : undefined,
         style,
       ]}
       {...rest}
@@ -39,32 +42,69 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
-  defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: '600',
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    lineHeight: 32,
-  },
-  subtitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  link: {
-    lineHeight: 30,
-    fontSize: 16,
-    color: '#0a7ea4',
-  },
-  fontWhiteSmall: { // letras en speciality box
-    color: '#FFF',
+  headboard: {
+    color: Colors.light.lightGrayText,
     textAlign: 'center',
-    fontFamily: 'Roboto',
+    fontFamily: Styles.fontFamily,
+    fontSize: 22,
+    fontStyle: 'normal',
+    fontWeight: 600,
+  },
+  headerSubtitle: {
+    color: Colors.light.darkGrayText,
+    fontFamily: Styles.fontFamily,
+    fontSize: 16,
+    fontStyle: 'normal',
+    fontWeight: 400,
+    alignSelf: 'flex-start'
+  },
+  longParagraphs: {
+    color: Colors.light.darkGrayText,
+    textAlign: 'center',
+    fontFamily: Styles.fontFamily,
+    fontSize: 12,
+    fontStyle: 'normal',
+    fontWeight: 300,
+    lineHeight: 15,
+    letterSpacing: -0.06,
+  },
+  onboarding: {
+    color: Colors.light.lightGrayText,
+    textAlign: 'center',
+    fontFamily: Styles.fontFamily,
+    fontSize: 32,
+    fontStyle: 'normal',
+    fontWeight: 500,
+  },
+  doctorName: {
+    fontFamily: Styles.fontFamily,
+    fontSize: 15,
+    fontWeight: 700,
+  },
+  specialty: {
+    color: Colors.light.darkGrayText,
+    fontFamily: Styles.fontFamily,
+    fontSize: 13,
+    fontStyle: 'normal',
+    fontWeight: 300,
+    lineHeight: 15,
+  },
+  specialtyBox: {
+    color: Colors.light.white,
+    textAlign: 'center',
+    fontFamily: Styles.fontFamily,
     fontSize: 11,
     fontStyle: 'normal',
     fontWeight: '600',
-    lineHeight: 11,
+  },
+  littleButton: {
+    color: Colors.light.lightGrayText,
+    textAlign: 'center',
+    fontFamily: Styles.fontFamily,
+    fontSize: 12,
+    fontStyle: 'normal',
+    fontWeight: 500,
+    lineHeight: 20,
+    letterSpacing: -0.06,
   }
 });

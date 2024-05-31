@@ -1,17 +1,22 @@
-import { ThemedText } from "@/components/atoms/ThemedText";
-import { CenteredView } from "@/components/containers/CenteredView";
-import { TopBar } from "@/components/molecules/TopBar";
+import { ScrollView } from "react-native";
 import { Link } from "expo-router";
+import { CenteredView } from "@/components/containers/CenteredView";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { TopBar } from "@/components/molecules/TopBar";
+import { DoctorsList } from "@/components/organisms/DoctorsList";
 
 export default function DoctorScreen() {
     return (
         <>
             <TopBar title="Agendá un turno" backArrow />
-            <CenteredView>
-                <Link href="/">
-                    <ThemedText type="link">(Selecciona un médico)</ThemedText>
-                </Link>
-            </CenteredView>
+            <ScrollView>
+                <CenteredView>
+                    <DoctorsList />
+                    <Link href="/">
+                        <ThemedText>(Selecciona un médico)</ThemedText>
+                    </Link>
+                </CenteredView >
+            </ScrollView>
         </>
     )
 }

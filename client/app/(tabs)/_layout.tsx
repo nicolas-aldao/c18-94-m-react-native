@@ -62,6 +62,24 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="calendary/index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="motive/index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="appointment-confirmation/index"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

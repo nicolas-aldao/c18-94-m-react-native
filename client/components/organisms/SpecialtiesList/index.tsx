@@ -5,22 +5,19 @@ import { SpecialtyBoxSkeleton } from "@/components/atoms/SpecialtyBox/loading";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { useFetch } from "@/hooks/useFetch";
 import { ListContainer, StyledView } from "./styles";
-import { PopFadeView } from "@/animations/PopFadeView";
 
 export const SpecialtiesList = () => {
     const { data: specialties, isLoading, errorMessage } = useFetch({ serviceMethod: 'getSpecialties', initialData: [] });
 
     return (
         <StyledView>
-            <ThemedText>Lista de Especialidades:</ThemedText>
+            <ThemedText type="header-subtitle">Elegí una especialidad y conocé a nuestros especialistas</ThemedText>
             {
                 isLoading &&
-                <PopFadeView>
-                    <ListContainer>
-                        {[...Array(9)].map((_, index) =>
-                            (<SpecialtyBoxSkeleton key={index} />))}
-                    </ListContainer>
-                </PopFadeView>
+                <ListContainer>
+                    {[...Array(9)].map((_, index) =>
+                        (<SpecialtyBoxSkeleton key={index} />))}
+                </ListContainer>
             }
             {
                 specialties?.length > 0 &&
