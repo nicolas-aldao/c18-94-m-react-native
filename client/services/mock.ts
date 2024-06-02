@@ -2,6 +2,7 @@ import { MedConnectProvider } from "./provider";
 import { responseMiddleware } from "@/middlewares/response";
 import { Specialty } from "@/types/specialty";
 import { Doctor } from "@/types/doctor";
+import { AvailableAppointments } from "@/types/available-appointment";
 
 // Este archivo es un servicio simulado que vamos a usar cuando no podamos usar el backend
 // No borrar los comentarios de las distintas respuestas con los distintos código de error
@@ -263,6 +264,58 @@ export class MockService implements MedConnectProvider {
                         __v: 0,
                     },
                     __v: 0,
+                },
+            ]
+        };
+        return responseMiddleware(res);
+    };
+
+    getAvailableAppointmentsByIdDoctor = async (id: string): Promise<AvailableAppointments[] | undefined> => {
+        await this.wait();
+        const res = {
+            status: 200,
+            data: [
+                {
+                    _id: "1",
+                    doctorId: "1",
+                    date: "2024-06-04",
+                    timeId: 1,
+                },
+                {
+                    _id: "2",
+                    doctorId: "1",
+                    date: "2024-06-04",
+                    timeId: 2,
+                },
+                {
+                    _id: "3",
+                    doctorId: "1",
+                    date: "2024-06-04",
+                    timeId: 3,
+                },
+                {
+                    _id: "4",
+                    doctorId: "1",
+                    date: "2024-06-06",
+                    timeId: 1,
+                },
+                {
+                    _id: "5",
+                    doctorId: "1",
+                    date: "2024-06-10",
+                    timeId: 1,
+                },
+                {
+                    _id: "6",
+                    doctorId: "1",
+                    date: "2024-06-10",
+                    timeId: 2,
+                },
+                {
+                    _id: "6",
+                    doctorId: "1",
+                    date: "2024-06-11",
+                    timeId: 1,
                 },
             ]
         };
