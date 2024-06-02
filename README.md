@@ -28,10 +28,14 @@ Acceso a historiales médicos durante las consultas.
   
 # 👥 Roles del Equipo
 
-Frontend: Ramiro, Andrés, Luna, Oscar, Nicolás Florentin, Nicolás Aldao
+Frontend: Andrés, Luna, Nicolás Florentin, Nicolás Aldao, María
+
 Backend/Base de Datos: Nicolás Aldao, Nicolás Florentin
+
 Diseño UX/UI: Delfina Rios
+
 Scrum Masters: Nicolás Florenti, Nicolás Aldao
+
 # 👤 Tipos de Usuario
 
 - Paciente
