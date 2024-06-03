@@ -16,6 +16,7 @@ export default function AppointmentConfirmationScreen() {
                 <ThemedText>{user?.name}</ThemedText>
                 <ThemedText>{user?.appointment?.date}</ThemedText>
                 <ThemedText>{user?.appointment?.time}</ThemedText>
+                <ThemedText>{user?.appointment?.motive}</ThemedText>
                 <Link href="/">
                     <ThemedText>Ir al home</ThemedText>
                 </Link>

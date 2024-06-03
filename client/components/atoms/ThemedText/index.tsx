@@ -5,7 +5,8 @@ import { Colors, Styles } from '@/constants/Styles';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'long-paragraph' | 'doctor-name';
+  type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'long-paragraph' | 'doctor-name'
+  | 'main-button';
 };
 
 export function ThemedText({
@@ -30,6 +31,7 @@ export function ThemedText({
         type === 'specialty' ? styles.specialty : undefined,
         type === 'specialty-box' ? styles.specialtyBox : undefined,
         type === 'little-button' ? styles.littleButton : undefined,
+        type === 'main-button' ? styles.mainButton : undefined,
         style,
       ]}
       {...rest}
@@ -106,5 +108,13 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     lineHeight: 20,
     letterSpacing: -0.06,
+  },
+  mainButton: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    fontWeight: '600',
+    lineHeight: 20,
+    letterSpacing: -0.005,
+    textAlign: 'center',
   }
 });
