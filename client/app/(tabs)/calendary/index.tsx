@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Link } from "expo-router";
 import { Hours } from "@/constants";
 import { MedConnectContext } from "@/context";
@@ -8,6 +8,7 @@ import { Calendar } from "@/components/atoms/Calendary";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Dropdown } from "@/components/atoms/Dropdown";
 import { TopBar } from "@/components/molecules/TopBar";
+import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
 
 export default function CalendaryScreen() {
     const { user, setUser } = useContext(MedConnectContext);
@@ -17,22 +18,39 @@ export default function CalendaryScreen() {
     const [items, setItems] = useState([]);
     const [selectedDates, setSelectedDates] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
+    const [isLoadingInternal, setIsLoadingInternal] = useState(false);
 
     const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: 'getAvailableAppointmentsByIdDoctor', initialData: [] })
     let uniqueDates = [];
 
-    useEffect(() => {
+    const markedDates = useMemo(() => {
         if (appointments) {
+            setIsLoadingInternal(true);
             uniqueDates = appointments?.map(appointment => appointment.date)
                 .filter((date, index, self) => self.indexOf(date) === index);
 
-            const markedDates = uniqueDates.reduce((acc, date) => {
+            const markedDatesResult = uniqueDates.reduce((acc, date) => {
                 acc[date] = { selected: true, marked: true, selectedColor: date === selectedDate ? 'orange' : 'green' };
                 return acc;
             }, {});
-            setSelectedDates(markedDates)
+            return markedDatesResult;
         }
-    }, [appointments, selectedDate])
+    }, [appointments, selectedDate]);
+
+    useEffect(() => {
+        // if (appointments) {
+        //     uniqueDates = appointments?.map(appointment => appointment.date)
+        //         .filter((date, index, self) => self.indexOf(date) === index);
+
+        //     const markedDates = uniqueDates.reduce((acc, date) => {
+        //         acc[date] = { selected: true, marked: true, selectedColor: date === selectedDate ? 'orange' : 'green' };
+        //         return acc;
+        //     }, {});
+        //     setSelectedDates(markedDates)
+        // }
+        setSelectedDates(markedDates)
+        setIsLoadingInternal(false);
+    }, [markedDates])
 
     useEffect(() => {
         const timeDropdown = appointments
@@ -48,6 +66,7 @@ export default function CalendaryScreen() {
     return (
         <>
             <TopBar title="Agendá tu turno" backArrow />
+            {(isLoading || isLoadingInternal) && <LoadingSpinner />}
             <CenteredView>
                 <ThemedText>Elija dia y hora del turno</ThemedText>
                 <Calendar
