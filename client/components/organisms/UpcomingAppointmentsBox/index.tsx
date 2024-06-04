@@ -1,10 +1,9 @@
 import React from "react"
-import { Link, router } from "expo-router"
+import { router } from "expo-router"
 import { Colors } from "@/constants/Styles"
-import { ThemedText } from "@/components/atoms/ThemedText"
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton"
 import { UpcomingAppointment } from "../../molecules/UpcomingAppointment"
-import { SectionContainer, AppointmentsWrapper, TitleSection, ButtonSection } from "./styles"
+import { SectionContainer, AppointmentsWrapper, ButtonSection } from "./styles"
 import { useFetch } from "@/hooks/useFetch"
 import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment"
 import { Hours } from "@/constants"
@@ -16,12 +15,6 @@ export const UpcomingAppointmentsBox = () => {
 
 	return (
 		<SectionContainer>
-			<TitleSection>
-				<ThemedText type="section">Mis turnos</ThemedText>
-				<Link href='/my-appointments'>
-					<ThemedText type="show-all">Ver todos</ThemedText>
-				</Link>
-			</TitleSection>
 			<AppointmentsWrapper>
 				{(appointments?.length > 0) && (
 					!isLoading && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>

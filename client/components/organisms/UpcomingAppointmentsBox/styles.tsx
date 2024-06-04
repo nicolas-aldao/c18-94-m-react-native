@@ -6,7 +6,6 @@ export const SectionContainer = styled(ThemedView)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 10px 0;
 	width: 100%;
 `
 export const AppointmentsWrapper = styled(ThemedView)`
@@ -18,14 +17,7 @@ export const AppointmentsWrapper = styled(ThemedView)`
 	border-radius: ${Styles.borderRadius.lg};
 	background-color: ${Colors.light.gray};
 `
-export const TitleSection = styled(ThemedView)`
-	display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-	padding: 10px 0;
-`
+
 
 export const ButtonSection = styled(ThemedView)`
 	align-items: center;

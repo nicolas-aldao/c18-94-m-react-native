@@ -2,8 +2,7 @@ import { View } from "react-native";
 import styled from "styled-components";
 
 export const StyledView = styled(View)`
-    display: flex;
-    align-items: center;
+    justify-content: flex-start;
 `;
 
 export const ListContainer = styled(View)`
