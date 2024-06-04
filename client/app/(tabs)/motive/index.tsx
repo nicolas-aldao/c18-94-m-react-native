@@ -1,13 +1,13 @@
-import { useRouter } from "expo-router";
-import { CenteredView } from "@/components/containers/CenteredView";
-import { ThemedText } from "@/components/atoms/ThemedText";
-import { TopBar } from "@/components/molecules/TopBar";
-import { BigButton } from "@/components/atoms/BigButton";
 import { useContext, useState } from "react";
-import { BottomButton } from "@/components/containers/BottomButton";
-import { TextArea } from "@/components/atoms/TextArea";
+import { useRouter } from "expo-router";
 import { MedConnectContext } from "@/context";
+import { CenteredView } from "@/components/containers/CenteredView";
+import { BottomButton } from "@/components/containers/BottomButton";
+import { ThemedText } from "@/components/atoms/ThemedText";
+import { BigButton } from "@/components/atoms/BigButton";
 import { Spacer } from "@/components/atoms/Spacer";
+import { TextArea } from "@/components/atoms/TextArea";
+import { TopBar } from "@/components/molecules/TopBar";
 
 export default function MotiveScreen() {
     const router = useRouter();
@@ -29,7 +29,8 @@ export default function MotiveScreen() {
         <>
             <TopBar title="Agendá tu turno" backArrow />
             <CenteredView>
-                <ThemedText type="header-subtitle" style={{ marginBottom: 26 }}>Explicanos tu motivo de consulta</ThemedText>
+                <ThemedText type="header-subtitle">Explicanos tu motivo de consulta</ThemedText>
+                <Spacer height={26} />
                 <TextArea
                     onChangeText={setText}
                     text={text}

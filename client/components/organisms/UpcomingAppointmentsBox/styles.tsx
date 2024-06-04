@@ -14,6 +14,7 @@ export const AppointmentsWrapper = styled(ThemedView)`
 	min-height: 200px;
 	width: 100%;
 	justify-content: space-between;
+	align-items: center;
 	border-radius: ${Styles.borderRadius.lg};
 	background-color: ${Colors.light.gray};
 `

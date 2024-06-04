@@ -17,7 +17,7 @@ export const UpcomingAppointmentsBox = () => {
 		<SectionContainer>
 			<AppointmentsWrapper>
 				{(appointments?.length > 0) && (
-					!isLoading && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
+					!isLoading && appointments?.slice(0, 2).map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
 						<>
 							<UpcomingAppointment key={appoint._id} date={appoint.date} time={Hours[appoint.timeId]}
 								doctorName={appoint.doctorName} specialtyName={appoint.specialtyName} />
@@ -33,7 +33,7 @@ export const UpcomingAppointmentsBox = () => {
 				)}
 				<ButtonSection>
 					<RoundedLittlePrimaryButton color={Colors.light.primary} text="Agendar turno"
-						onPress={() => { router.push("/specialties") }} />
+						onPress={() => { router.push("/specialties") }} borderStyle="none" />
 				</ButtonSection>
 			</AppointmentsWrapper>
 		</SectionContainer>

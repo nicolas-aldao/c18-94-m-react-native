@@ -1,6 +1,5 @@
 
-import { TextInput } from "react-native";
-import { StyledView } from "./styles";
+import { StyledTextInput } from "./styles";
 import { FC } from "react";
 
 type TextAreaProps = {
@@ -11,14 +10,13 @@ type TextAreaProps = {
 
 export const TextArea: FC<TextAreaProps> = ({ text, onChangeText, placeholder }) => {
     return (
-        <StyledView>
-            <TextInput
-                multiline
-                numberOfLines={10}
-                onChangeText={onChangeText}
-                value={text}
-                placeholder={placeholder}
-            />
-        </StyledView>
+        <StyledTextInput
+            multiline
+            numberOfLines={10}
+            onChangeText={onChangeText}
+            value={text}
+            maxLength={70}
+            placeholder={placeholder}
+        />
     )
 }

@@ -6,7 +6,7 @@ import { StyledCalendar } from "./styles";
 
 interface CalendarProps {
     onDayPress: (day: any) => void;
-    markedDates: any;
+    markedDates: unknown;
 }
 
 export const Calendar: FC<CalendarProps> = ({ onDayPress, markedDates }) => {

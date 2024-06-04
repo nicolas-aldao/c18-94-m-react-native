@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { Hours } from "@/constants";
 import { MedConnectContext } from "@/context";
 import { useFetch } from "@/hooks/useFetch";
@@ -9,6 +9,7 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 import { Dropdown } from "@/components/atoms/Dropdown";
 import { TopBar } from "@/components/molecules/TopBar";
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
+import { BigButton } from "@/components/atoms/BigButton";
 
 export default function CalendaryScreen() {
     const { user, setUser } = useContext(MedConnectContext);
@@ -30,7 +31,7 @@ export default function CalendaryScreen() {
                 .filter((date, index, self) => self.indexOf(date) === index);
 
             const markedDatesResult = uniqueDates.reduce((acc, date) => {
-                acc[date] = { selected: true, marked: true, selectedColor: date === selectedDate ? 'orange' : 'green' };
+                acc[date] = { selected: true, marked: false, selectedColor: date === selectedDate ? 'orange' : 'green' };
                 return acc;
             }, {});
             return markedDatesResult;
@@ -68,7 +69,7 @@ export default function CalendaryScreen() {
             <TopBar title="Agendá tu turno" backArrow />
             {(isLoading || isLoadingInternal) && <LoadingSpinner />}
             <CenteredView>
-                <ThemedText>Elija dia y hora del turno</ThemedText>
+                <ThemedText type="header-subtitle">Elegí fecha y hora</ThemedText>
                 <Calendar
                     onDayPress={day => {
                         setSelectedDate(day.dateString);
@@ -85,7 +86,11 @@ export default function CalendaryScreen() {
                     setItems={setItems}
                     disabled={selectedDate === ''}
                 />
-                <Link href="/motive" onPress={() => {
+                {/* <Link href="/motive" onPress={
+                }}>
+                    <ThemedText>Confimar</ThemedText>
+                </Link> */}
+                <BigButton text="Confirmar" onPress={() => {
                     setUser({
                         ...user,
                         appointment: {
@@ -94,9 +99,8 @@ export default function CalendaryScreen() {
                             time: Hours[value]
                         }
                     })
-                }}>
-                    <ThemedText>Confimar</ThemedText>
-                </Link>
+                    router.push("/motive")
+                }} />
             </CenteredView>
         </>
     )

@@ -12,6 +12,7 @@ import { UpcomingMedicalAppointments } from "@/components/organisms/DoctorItemRo
 import { MedicalAppointmentTemplate } from "@/components/organisms/DoctorItemRow/Common/MedicalAppointmentTemplate.tsx";
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton";
 import { StyledView } from "./styles";
+import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/skeleton";
 
 export default function MyAppointmentsScreen() {
     const [serviceMethod, setServiceMethod] = useState('getUpcomingAppointmentsByIdPatient')
@@ -32,7 +33,13 @@ export default function MyAppointmentsScreen() {
                 <RoundedLittlePrimaryButton color={serviceMethod === "getUpcomingAppointmentsByIdPatient" ? Colors.light.green : undefined} text="Próximos" onPress={() => { wait(); setServiceMethod('getUpcomingAppointmentsByIdPatient') }} borderStyle={serviceMethod === "getUpcomingAppointmentsByIdPatient" ? "none" : undefined} />
             </StyledView>
             <CenteredView>
-                {(isLoading || isLoadingInternal) && <ThemedText>Loading...</ThemedText>}
+                {(isLoading || isLoadingInternal) && [...Array(4)].map((_, index) =>
+                (
+                    <>
+                        <DoctorItemRowSkeleton key={index} />
+                        <Spacer height={15} />
+                    </>
+                ))}
                 {(appointments?.length > 0) && (
                     !isLoadingInternal && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
                         <>
