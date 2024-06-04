@@ -3,12 +3,13 @@ import { responseMiddleware } from "@/middlewares/response";
 import { Specialty } from "@/types/specialty";
 import { Doctor } from "@/types/doctor";
 import { AvailableAppointments } from "@/types/available-appointment";
+import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment";
 
 // Este archivo es un servicio simulado que vamos a usar cuando no podamos usar el backend
 // No borrar los comentarios de las distintas respuestas con los distintos código de error
 export class MockService implements MedConnectProvider {
     wait = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
     };
 
     getSpecialties = async (): Promise<Specialty[] | undefined> => {
@@ -317,6 +318,78 @@ export class MockService implements MedConnectProvider {
                     date: "2024-06-11",
                     timeId: 1,
                 },
+            ]
+        };
+        return responseMiddleware(res);
+    };
+
+    getUpcomingAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
+        await this.wait();
+        const res = {
+            status: 200,
+            data: [
+                {
+                    _id: "1",
+                    finished: false,
+                    patientId: "1",
+                    doctorName: "Steve Johnsonproximo 1",
+                    doctorImg: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
+                    specialtyName: "Cardiology",
+                    date: "2024-06-04",
+                    timeId: 1,
+                },
+                {
+                    _id: "2",
+                    finished: false,
+                    patientId: "1",
+                    doctorName: "John Doeproximo 2",
+                    doctorImg: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
+                    specialtyName: "Cardiology",
+                    date: "2024-06-04",
+                    timeId: 1,
+                },
+
+            ]
+        };
+        return responseMiddleware(res);
+    };
+
+    getCompletedAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
+        await this.wait();
+        const res = {
+            status: 200,
+            data: [
+                {
+                    _id: "1",
+                    finished: true,
+                    patientId: "1",
+                    doctorName: "Steve Johnson completo 1",
+                    doctorImg: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
+                    specialtyName: "Cardiology",
+                    date: "2010-06-04",
+                    timeId: 1,
+                },
+                {
+                    _id: "2",
+                    finished: true,
+                    patientId: "1",
+                    doctorName: "John Doe completo 2",
+                    doctorImg: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
+                    specialtyName: "Traumatology",
+                    date: "2010-06-04",
+                    timeId: 1,
+                },
+                {
+                    _id: "3",
+                    finished: true,
+                    patientId: "1",
+                    doctorName: "Richard Smith completo 3",
+                    doctorImg: "https://www.figma.com/component/0e4e98e55d60f1f0fb22257c7f92fc59420cfea8/thumbnail?ver=2243%3A566&fuid=1375887789832720451",
+                    specialtyName: "Traumatology",
+                    date: "2010-06-04",
+                    timeId: 1,
+                },
+
             ]
         };
         return responseMiddleware(res);

@@ -4,6 +4,7 @@ import { BigButton } from "@/components/atoms/BigButton"
 import { ThemedText } from "@/components/atoms/ThemedText"
 import { StyledView } from "./styles"
 import { BottomButton } from "@/components/containers/BottomButton"
+import { BigPrimaryButton } from "@/components/atoms/BigPrimaryButton"
 
 interface AppointmentConfirmationModalProps {
     isVisible: boolean;
@@ -44,7 +45,7 @@ export const AppointmentConfirmationModal: FC<AppointmentConfirmationModalProps>
             <ThemedText type="header-subtitle">Fecha:</ThemedText>
             <ThemedText type="header-subtitle">Hora:</ThemedText>
             <BottomButton>
-                <BigButton text="Volver al Inicio" onPress={onClose} />
+                <BigPrimaryButton text="Volver al Inicio" onPress={onClose} />
             </BottomButton>
         </StyledView>
         : null

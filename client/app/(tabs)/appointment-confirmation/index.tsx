@@ -10,6 +10,8 @@ import { BigButton } from "@/components/atoms/BigButton";
 import { Spacer } from "@/components/atoms/Spacer";
 import { TopBar } from "@/components/molecules/TopBar";
 import { AppointmentConfirmationModal } from "@/components/organisms/AppointmentConfirmationModal";
+import { Colors } from "@/constants/Styles";
+import { BigPrimaryButton } from "@/components/atoms/BigPrimaryButton";
 
 export default function AppointmentConfirmationScreen() {
     const { user } = useContext(MedConnectContext);
@@ -34,7 +36,7 @@ export default function AppointmentConfirmationScreen() {
                 </Info>
             </CenteredView>
             <BottomButton>
-                <BigButton text="Confirmar" onPress={() => setOpenModal(true)} />
+                <BigPrimaryButton text="Confirmar" onPress={() => setOpenModal(true)} />
                 <Spacer height={30} />
             </BottomButton>
             <AnimatePresence>

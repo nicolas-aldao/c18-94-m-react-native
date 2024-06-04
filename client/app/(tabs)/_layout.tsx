@@ -1,12 +1,14 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Colors } from '@/constants/Styles';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { MedConnectContext } from '@/context';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { user } = useContext(MedConnectContext);
 
   return (
     <Tabs

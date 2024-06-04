@@ -1,19 +1,19 @@
 
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { TouchableOpacity } from "react-native";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { ProfilePictureCircle } from "@/components/atoms/ProfilePictureCircle";
-import { RoundedLittleButton } from "@/components/atoms/RoundedLittleButton";
 import { ButtonSection, FirstColumn, RowContainer, SecondColumn } from "./styles";
 import { useRouter } from "expo-router";
 
-interface DoctorItemRowProps {
+interface MedicalAppointmentTemplateProps {
     image_url: any;
     name: string;
     specialty: string;
+    children: ReactNode;
 }
 
-export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, specialty }) => {
+export const MedicalAppointmentTemplate: FC<MedicalAppointmentTemplateProps> = ({ children, image_url, name, specialty }) => {
     const navigation = useRouter();
 
     return (
@@ -24,9 +24,9 @@ export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, special
                 </FirstColumn>
                 <SecondColumn>
                     <ThemedText type="doctor-name">Dr. {name}</ThemedText>
+                    <ThemedText type="specialty">{specialty}</ThemedText>
                     <ButtonSection>
-                        <ThemedText type="specialty">{specialty}</ThemedText>
-                        <RoundedLittleButton text="Info" onPress={() => console.log('pressed')} />
+                        {children}
                     </ButtonSection>
                 </SecondColumn>
             </RowContainer>

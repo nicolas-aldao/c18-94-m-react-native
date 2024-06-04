@@ -1,22 +1,22 @@
 
-import { TouchableOpacity } from "react-native";
-import { StyledView } from "./styles";
+import { StyledTouchableOpacity } from "./styles";
 import { ThemedText } from "../ThemedText";
 import { FC } from "react";
 
 type BigButtonProps = {
     text: string;
     onPress: () => void;
+    color?: string;
+    borderStyle?: string;
+    typeText?: string;
 }
 
-export const BigButton: FC<BigButtonProps> = ({ text, onPress }) => {
+export const BigButton: FC<BigButtonProps> = ({ text, onPress, color, borderStyle, typeText }) => {
     return (
-        <StyledView>
-            <TouchableOpacity onPress={onPress}>
-                <ThemedText type="main-button">
-                    {text}
-                </ThemedText>
-            </TouchableOpacity>
-        </StyledView>
+        <StyledTouchableOpacity color={color} borderStyle={borderStyle} onPress={onPress}>
+            <ThemedText type={typeText ?? "main-button"}>
+                {text}
+            </ThemedText>
+        </StyledTouchableOpacity>
     )
 }

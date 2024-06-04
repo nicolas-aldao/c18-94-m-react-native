@@ -6,7 +6,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { MedConnectContext } from '@/context';
 
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -15,7 +14,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
-  const [user, setUser] = useState({ name: "John Doe", dni: "12345678", appointment: { motive: "", date: "", time: "" } });
+  const [user, setUser] = useState({ isDoctor: false, name: "John Doe", dni: "12345678", appointment: { motive: "", date: "", time: "" } });
 
   useEffect(() => {
     if (loaded) {

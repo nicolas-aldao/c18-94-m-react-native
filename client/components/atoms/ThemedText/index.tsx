@@ -5,8 +5,8 @@ import { Colors, Styles } from '@/constants/Styles';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'long-paragraph' | 'doctor-name'
-  | 'main-button';
+  type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'little-button-bold' | 'long-paragraph' | 'doctor-name'
+  | 'main-button' | 'main-button-bold';
 };
 
 export function ThemedText({
@@ -31,7 +31,9 @@ export function ThemedText({
         type === 'specialty' ? styles.specialty : undefined,
         type === 'specialty-box' ? styles.specialtyBox : undefined,
         type === 'little-button' ? styles.littleButton : undefined,
+        type === 'little-button-bold' ? styles.littleButtonBold : undefined,
         type === 'main-button' ? styles.mainButton : undefined,
+        type === 'main-button-bold' ? styles.mainButtonBold : undefined,
         style,
       ]}
       {...rest}
@@ -109,10 +111,28 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     letterSpacing: -0.06,
   },
+  littleButtonBold: {
+    color: Colors.light.lightGrayText,
+    textAlign: 'center',
+    fontFamily: Styles.fontFamily,
+    fontSize: 12,
+    fontStyle: 'normal',
+    fontWeight: 700,
+    lineHeight: 20,
+    letterSpacing: -0.06,
+  },
   mainButton: {
     fontFamily: 'Roboto',
     fontSize: 18,
     fontWeight: '600',
+    lineHeight: 20,
+    letterSpacing: -0.005,
+    textAlign: 'center',
+  },
+  mainButtonBold: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    fontWeight: 800,
     lineHeight: 20,
     letterSpacing: -0.005,
     textAlign: 'center',
