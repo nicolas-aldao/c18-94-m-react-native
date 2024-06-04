@@ -1,17 +1,21 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import { AppointmentContainer } from './styles'
+import { AppointmentContainer, DateTimeText, DoctorText, SpecialtyText } from './styles'
 
 // Define la interfaz para las props
 interface UpcomingAppointmentProps {
-	title: string;
+	date: string;
+	time: string;
+	doctorName: string;
+	specialtyName: string;
 }
 
 // Usa la interfaz para tipar las props del componente
-export const UpcomingAppointment: React.FC<UpcomingAppointmentProps> = ({ title }) => {
+export const UpcomingAppointment: React.FC<UpcomingAppointmentProps> = ({ date, time, doctorName, specialtyName }) => {
 	return (
-			<AppointmentContainer>
-					<Text>{title}</Text>
-			</AppointmentContainer>
+		<AppointmentContainer>
+			<DateTimeText>{date}, {time}</DateTimeText>
+			<DoctorText>{doctorName}</DoctorText>
+			<SpecialtyText>{specialtyName}</SpecialtyText>
+		</AppointmentContainer>
 	);
 };

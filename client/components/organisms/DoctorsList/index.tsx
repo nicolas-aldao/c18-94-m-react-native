@@ -2,7 +2,7 @@
 import { useFetch } from "@/hooks/useFetch";
 import { DoctorItemRow } from "../DoctorItemRow";
 import { ListContainer, StyledView, ItemContainer } from "./styles";
-import { DoctorItemRowSkeleton } from "../DoctorItemRow/loading";
+import { DoctorItemRowSkeleton } from "../DoctorItemRow/skeleton";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Doctor } from "@/types/doctor";
 

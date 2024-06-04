@@ -6,7 +6,7 @@ export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
   type?: 'default' | 'headboard' | 'header-subtitle' | 'onboarding' | 'specialty' | 'specialty-box' | 'little-button' | 'little-button-bold' | 'long-paragraph' | 'doctor-name'
-  | 'main-button' | 'main-button-bold';
+  | 'main-button' | 'main-button-bold' | 'show-all' | 'section';
 };
 
 export function ThemedText({
@@ -34,6 +34,8 @@ export function ThemedText({
         type === 'little-button-bold' ? styles.littleButtonBold : undefined,
         type === 'main-button' ? styles.mainButton : undefined,
         type === 'main-button-bold' ? styles.mainButtonBold : undefined,
+        type === 'show-all' ? styles.showAll : undefined,
+        type === 'section' ? styles.section : undefined,
         style,
       ]}
       {...rest}
@@ -136,5 +138,18 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     letterSpacing: -0.005,
     textAlign: 'center',
+  },
+  showAll: {
+    fontFamily: 'Roboto',
+    fontSize: 15,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    textDecorationLine: "underline"
+  },
+  section: {
+    fontFamily: 'Roboto',
+    fontSize: 22,
+    fontStyle: 'normal',
+    fontWeight: 600,
   }
 });

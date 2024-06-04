@@ -1,78 +1,47 @@
-import { FlatList, ScrollView, View } from "react-native"
 import React from "react"
+import { Link, router } from "expo-router"
+import { Colors } from "@/constants/Styles"
 import { ThemedText } from "@/components/atoms/ThemedText"
-import { SectionContainer, SectionTitle, AppointmentsWrapper, TitleSection } from "./styles"
+import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton"
 import { UpcomingAppointment } from "../../molecules/UpcomingAppointment"
-import { ExternalLink } from "@/components/atoms/ExternalLink"
-import { Link } from "expo-router"
-
-interface Appointment {
-	dateAndTime: string
-	doctor: {
-		id: number
-		name: string
-	}
-}
-
-const appointments = [
-	{
-		dateAndTime: "2024-06-11T14:35:47.256Z",
-		id: "1",
-		doctor: {
-			id: 123,
-			name: "Dr. Garcia",
-		},
-	},
-	{
-		dateAndTime: "2024-07-22T19:50:25.765Z",
-		id: "2",
-		doctor: {
-			id: 123,
-			name: "Dr. Florentin",
-		},
-	},
-	{
-		dateAndTime: "2024-09-05T03:17:30.145Z",
-		id: "3",
-		doctor: {
-			id: 123,
-			name: "Dr. Moreno",
-		},
-	},
-	{
-		dateAndTime: "2024-10-15T09:45:02.334Z",
-		id: "4",
-		doctor: {
-			id: 123,
-			name: "Dr. Zamito",
-		},
-	},
-	{
-		dateAndTime: "2024-11-30T12:30:15.789Z",
-		id: "5",
-		doctor: {
-			id: 123,
-			name: "Dr. Marchese",
-		},
-	},
-]
+import { SectionContainer, AppointmentsWrapper, TitleSection, ButtonSection } from "./styles"
+import { useFetch } from "@/hooks/useFetch"
+import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment"
+import { Hours } from "@/constants"
+import { Spacer } from "@/components/atoms/Spacer"
+import { UpcomingAppointmentSkeleton } from "@/components/molecules/UpcomingAppointment/skeleton"
 
 export const UpcomingAppointmentsBox = () => {
+	const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: "getUpcomingAppointmentsByIdPatient", initialData: [] })
+
 	return (
 		<SectionContainer>
 			<TitleSection>
-				<SectionTitle type='subtitle'>Próximos turnos</SectionTitle>
+				<ThemedText type="section">Mis turnos</ThemedText>
 				<Link href='/my-appointments'>
-					<ThemedText type='link'>Ver todos</ThemedText>
+					<ThemedText type="show-all">Ver todos</ThemedText>
 				</Link>
 			</TitleSection>
 			<AppointmentsWrapper>
-				<FlatList
-					data={appointments}
-					renderItem={({ item }) => <UpcomingAppointment title={item.doctor.name} />}
-					keyExtractor={(item) => item.id}
-					ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
-				/>
+				{(appointments?.length > 0) && (
+					!isLoading && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
+						<>
+							<UpcomingAppointment key={appoint._id} date={appoint.date} time={Hours[appoint.timeId]}
+								doctorName={appoint.doctorName} specialtyName={appoint.specialtyName} />
+							<Spacer height={15} />
+						</>
+					)
+				)}
+				{isLoading && [...Array(2)].map((_, index) =>
+					<>
+						<UpcomingAppointmentSkeleton key={index} />
+						<Spacer height={15} />
+					</>
+				)}
+				<ButtonSection>
+					<RoundedLittlePrimaryButton color={Colors.light.primary} text="Agendar turno"
+						onPress={() => { router.push("/specialties") }} />
+				</ButtonSection>
 			</AppointmentsWrapper>
 		</SectionContainer>
 	)
