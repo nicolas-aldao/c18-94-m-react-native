@@ -1,5 +1,5 @@
 const Router = require('express')
-const { Appointment } = require('../models/schemas')
+const { Appointment, AvailableAppointment } = require('../models/schemas')
 
 const appointmentRouter = Router()
 
@@ -47,6 +47,15 @@ appointmentRouter.get('/', async (req, res, next) => {
 appointmentRouter.post('/', async (req, res, next) => {
 	const { patientId, doctorId, date, timeId, motive } = req.body
 	try {
+
+		const availableAppointment = await AvailableAppointment.findOneAndUpdate(
+			{ doctorId, date, timeId, taken: false },
+			{ taken: true },
+		);
+
+		if (!availableAppointment) {
+			return res.status(404).json({ message: 'No hay cita disponible para actualizar' });
+		}
 
 		const appointment = new Appointment({ patientId, doctorId, date, timeId, motive });
 		await appointment.save();
