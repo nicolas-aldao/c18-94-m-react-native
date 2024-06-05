@@ -7,7 +7,7 @@ const doctorRouter = Router()
 doctorRouter.get('/', async (req, res, next) => {
 	const { specialtyId, name } = req.query
 	try {
-		const foundSpecialty = await Specialty.findById( specialtyId )
+		const foundSpecialty = await Specialty.findById(specialtyId)
 		const foundDoctors = await Doctor.find({ specialty: foundSpecialty._id }).populate('specialty').populate('user')
 		if (name) {
 			const filteredDoctors = foundDoctors.filter(doctor => doctor.user.name.toLowerCase() === name.toLowerCase())
@@ -37,11 +37,10 @@ doctorRouter.post('/', async (req, res, next) => {
 			gender,
 			nationality,
 			specialtyId,
-			hours
-
+			profile_pic
 		} = req.body;
 
-		if (!specialty) {
+		if (!specialtyId) {
 			return res.status(400).json({ error: 'Specialty is required' });
 		}
 
@@ -61,7 +60,8 @@ doctorRouter.post('/', async (req, res, next) => {
 			address,
 			birthDate,
 			gender,
-			nationality
+			nationality,
+			profile_pic
 		});
 
 		await newUser.save();

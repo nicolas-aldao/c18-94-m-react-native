@@ -26,7 +26,7 @@ export const SpecialtiesList: FC<SpecialtiesListProps> = ({ maxItemsToRender }) 
                 specialties?.length > 0 &&
                 <ListContainer>
                     {specialties?.slice(0, (maxItemsToRender ?? specialties?.lenght)).map((specialty: Specialty) => (
-                        <SpecialtyBox key={specialty.name} name={specialty.name} image_url={specialty.image_url} />
+                        <SpecialtyBox key={specialty.name} id={specialty._id} name={specialty.name} image_url={specialty.image_url} />
                     ))}
                 </ListContainer>
             }

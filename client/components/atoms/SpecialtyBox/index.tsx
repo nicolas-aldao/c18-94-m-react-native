@@ -9,14 +9,15 @@ import { useRouter } from "expo-router";
 interface SpecialtyBoxProps {
     image_url: any;
     name: string;
+    id: string
 }
 
-export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name }) => {
+export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name, id }) => {
     const specialtyImage = getSpecialtyImage(image_url);
     const navigation = useRouter();
 
     return (
-        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push('/doctors')}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push(`/doctors?id=${id}`)}>
             <LinearGradient
                 colors={['#253332', '#495251']}
                 start={{ x: 0, y: 0 }}

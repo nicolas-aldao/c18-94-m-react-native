@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { Link, router } from "expo-router";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { Hours } from "@/constants";
 import { MedConnectContext } from "@/context";
 import { useFetch } from "@/hooks/useFetch";
@@ -21,7 +21,8 @@ export default function CalendaryScreen() {
     const [selectedDate, setSelectedDate] = useState('');
     const [isLoadingInternal, setIsLoadingInternal] = useState(false);
 
-    const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: 'getAvailableAppointmentsByIdDoctor', initialData: [] })
+    const { doctorId } = useLocalSearchParams();
+    const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: 'getAvailableAppointmentsByIdDoctor', param: doctorId, initialData: [] })
     let uniqueDates = [];
 
     const markedDates = useMemo(() => {

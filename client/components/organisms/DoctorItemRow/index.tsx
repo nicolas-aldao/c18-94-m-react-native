@@ -11,13 +11,14 @@ interface DoctorItemRowProps {
     image_url: any;
     name: string;
     specialty: string;
+    id: string;
 }
 
-export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, specialty }) => {
+export const DoctorItemRow: FC<DoctorItemRowProps> = ({ image_url, name, specialty, id }) => {
     const navigation = useRouter();
 
     return (
-        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push('/calendary')}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push(`/calendary?doctorId=${id}`)}>
             <RowContainer>
                 <FirstColumn>
                     <ProfilePictureCircle height={67} width={67} source={image_url} />

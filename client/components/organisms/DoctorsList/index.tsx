@@ -1,13 +1,14 @@
-
+import { useLocalSearchParams } from "expo-router";
 import { useFetch } from "@/hooks/useFetch";
 import { DoctorItemRow } from "../DoctorItemRow";
-import { ListContainer, StyledView, ItemContainer } from "./styles";
 import { DoctorItemRowSkeleton } from "../DoctorItemRow/skeleton";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Doctor } from "@/types/doctor";
+import { ListContainer, StyledView, ItemContainer } from "./styles";
 
 export const DoctorsList = () => {
-    const { data: doctors, isLoading, errorMessage } = useFetch({ serviceMethod: 'getDoctorsByIdSpecialty', initialData: [] });
+    const { id } = useLocalSearchParams();
+    const { data: doctors, isLoading, errorMessage } = useFetch({ serviceMethod: 'getDoctorsByIdSpecialty', param: id, initialData: [] });
 
     return (
         <StyledView>
@@ -30,7 +31,7 @@ export const DoctorsList = () => {
                         <ItemContainer key={index}>
                             <DoctorItemRow name={doctor.user.name}
                                 image_url={{ uri: doctor.user.profile_pic }}
-                                specialty={doctor.specialty.name} />
+                                specialty={doctor.specialty.name} id={doctor._id} />
                         </ItemContainer>
                     ))}
                 </ListContainer>

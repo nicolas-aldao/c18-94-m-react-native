@@ -10,7 +10,8 @@ const userSchema = new Schema({
   address: { type: String, required: true },
   birthDate: { type: String, required: true },
   gender: { type: String, required: true },
-  nationality: { type: String, required: true }
+  nationality: { type: String, required: true },
+  profile_pic: { type: String, required: true }
 });
 
 // Doctor Schema
@@ -21,7 +22,8 @@ const doctorSchema = new Schema({
 
 // Specialty Schema
 const specialtySchema = new Schema({
-  name: { type: String, required: true }
+  name: { type: String, required: true },
+  image_url: { type: String, required: true }
 });
 
 // Patient Schema
@@ -30,10 +32,12 @@ const patientSchema = new Schema({
   socialSecurityNumber: { type: String, required: true }
 });
 
-// AvailableDate Schema
-const availableDateSchema = new Schema({
-  doctor: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true },
-  dateAndTime: { type: Date, required: true }
+// AvailableAppointment Schema
+const availableAppointmentSchema = new Schema({
+  doctorId: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true },
+  date: { type: String, required: true },
+  timeId: { type: Number, required: true },
+  taken: { type: Boolean, required: true }
 });
 
 // Appointment Schema
@@ -53,7 +57,7 @@ const Appointment = mongoose.model('Appointment', appointmentSchema);
 const Doctor = mongoose.model('Doctor', doctorSchema);
 const Specialty = mongoose.model('Specialty', specialtySchema);
 const Patient = mongoose.model('Patient', patientSchema);
-const AvailableDate = mongoose.model('AvailableDate', availableDateSchema);
+const AvailableAppointment = mongoose.model('AvailableAppointment', availableAppointmentSchema);
 
 // Export models
 module.exports = {
@@ -62,5 +66,5 @@ module.exports = {
   Doctor,
   Specialty,
   Patient,
-  AvailableDate
+  AvailableAppointment
 };

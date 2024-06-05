@@ -12,9 +12,6 @@ export default function DoctorScreen() {
             <ScrollView>
                 <CenteredView>
                     <DoctorsList />
-                    <Link href="/">
-                        <ThemedText>(Selecciona un médico)</ThemedText>
-                    </Link>
                 </CenteredView >
             </ScrollView>
         </>

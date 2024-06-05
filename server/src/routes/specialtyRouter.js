@@ -11,15 +11,15 @@ specialtyRouter.get('/', async (req, res, next) => {
 })
 
 specialtyRouter.post('/', async (req, res, next) => {
-	const { name } = req.query
+	const { name, image_url } = req.body
 	try {
 		console.log('create specialtie')
 
-		const specialty = new Specialty({ name });
+		const specialty = new Specialty({ name, image_url });
 		await specialty.save();
 		console.log('Specialty created:', specialty);
 
-		req.data = name
+		req.data = { name, image_url }
 		req.statusCode = 200
 		next()
 
