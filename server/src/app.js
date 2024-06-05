@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cors = require("cors");
 const express = require("express");
 const app = express();
@@ -7,7 +8,7 @@ const responseHandler = require('./middlewares/responseHandler');
 const errorHandler = require("./middlewares/errorHandler");
 
 // const uri = "mongodb+srv://nflorent:contraseña@telemedicinadb.jlrf2ra.mongodb.net/?retryWrites=true&w=majority&appName=telemedicinaDB"
-process.env.DB_URI
+const uri = process.env.DB_URI;
 
 mongoose
   .connect(uri)
