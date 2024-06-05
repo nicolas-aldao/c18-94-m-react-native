@@ -10,6 +10,7 @@ import { Dropdown } from "@/components/atoms/Dropdown";
 import { TopBar } from "@/components/molecules/TopBar";
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
 import { BigButton } from "@/components/atoms/BigButton";
+import { Colors } from "@/constants/Styles";
 
 export default function CalendaryScreen() {
     const { user, setUser } = useContext(MedConnectContext);
@@ -32,7 +33,7 @@ export default function CalendaryScreen() {
                 .filter((date, index, self) => self.indexOf(date) === index);
 
             const markedDatesResult = uniqueDates.reduce((acc, date) => {
-                acc[date] = { selected: true, marked: false, selectedColor: date === selectedDate ? 'orange' : 'green' };
+                acc[date] = { selected: true, marked: false, selectedColor: date === selectedDate ? Colors.light.black : '#9EEEB9', selectedTextColor: Colors.light.black };
                 return acc;
             }, {});
             return markedDatesResult;
@@ -72,6 +73,7 @@ export default function CalendaryScreen() {
             <CenteredView>
                 <ThemedText type="header-subtitle">Elegí fecha y hora</ThemedText>
                 <Calendar
+                    selectedDate={selectedDate}
                     onDayPress={day => {
                         setSelectedDate(day.dateString);
                     }}

@@ -3,7 +3,7 @@ import { router } from "expo-router"
 import { Colors } from "@/constants/Styles"
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton"
 import { UpcomingAppointment } from "../../molecules/UpcomingAppointment"
-import { SectionContainer, AppointmentsWrapper, ButtonSection } from "./styles"
+import { SectionContainer, AppointmentsWrapper, ButtonSection, EmptyStateText } from "./styles"
 import { useFetch } from "@/hooks/useFetch"
 import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment"
 import { Hours } from "@/constants"
@@ -34,8 +34,8 @@ export const UpcomingAppointmentsBox = () => {
 						<Spacer height={15} />
 					</>
 				)}
-				{(appointments?.length === 0 && !isLoading) && <ThemedText>Aún no tienes turnos agendados</ThemedText>}
-				{errorMessage && <ThemedText>En este momento no podemos mostrarte tus turnos, intenta más tarde</ThemedText>}
+				{(appointments?.length === 0 && !isLoading) && <EmptyStateText>No tienes turnos próximos agendados</EmptyStateText>}
+				{errorMessage && <EmptyStateText>En este momento no podemos mostrarte tus turnos, intenta más tarde</EmptyStateText>}
 				<ButtonSection>
 					<RoundedLittlePrimaryButton color={Colors.light.primary} text="Agendar turno"
 						onPress={() => { router.push("/specialties") }} borderStyle="none" />

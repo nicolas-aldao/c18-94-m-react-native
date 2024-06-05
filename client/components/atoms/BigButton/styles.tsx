@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
 
 export const StyledTouchableOpacity = styled(TouchableOpacity)`
-    background-color: ${(props) => props.color ?? Colors.light.gray};
+    background-color: ${(props) => props.color ?? Colors.light.white};
     width: 191px;
     height: 45px;
     padding: 8px 12px;

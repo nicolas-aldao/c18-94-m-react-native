@@ -19,7 +19,7 @@ export const Dropdown: FC<DropdownProps> = ({ placeholder, open, value, items, s
     return (
         <StyledView>
             <DropDownPicker
-                style={{ borderWidth: 2, borderColor: Colors.light.darkGray }}
+                style={{ borderWidth: 0, backgroundColor: Colors.light.gray }}
                 placeholder={placeholder}
                 open={open}
                 value={value}
@@ -28,6 +28,13 @@ export const Dropdown: FC<DropdownProps> = ({ placeholder, open, value, items, s
                 setValue={setValue}
                 setItems={setItems}
                 disabled={disabled}
+                dropDownContainerStyle={{
+                    backgroundColor: Colors.light.gray,
+                    borderWidth: 0
+                }}
+                disabledStyle={{
+                    opacity: 0.5
+                }}
             />
         </StyledView>
     )

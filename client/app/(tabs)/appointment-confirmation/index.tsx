@@ -25,13 +25,13 @@ export default function AppointmentConfirmationScreen() {
     }, [appointment])
 
     const bookAppointment = () => {
-        // setBody({
-        //     patientId: user?.id,
-        //     doctorId: user?.doctor?.id,
-        //     date: user?.appointment?.date,
-        //     timeId: user?.appointment?.time,
-        //     motive: user?.appointment?.motive
-        // })
+        setBody({
+            patientId: user?.id,
+            doctorId: user?.doctor?.id,
+            date: user?.appointment?.date,
+            timeId: user?.appointment?.time,
+            motive: user?.appointment?.motive
+        })
         setOpenModal(true);
     }
 
