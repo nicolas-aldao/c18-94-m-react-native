@@ -14,7 +14,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
-  const [user, setUser] = useState({ isDoctor: false, name: "John Doe", dni: "12345678", appointment: { motive: "", date: "", time: "" } });
+  const [user, setUser] = useState({ id: "333333333333333333333333", isDoctor: false, name: "John Doe", dni: "12345678", appointment: { motive: "", date: "", time: "" } });
 
   useEffect(() => {
     if (loaded) {

@@ -43,28 +43,29 @@ const availableAppointmentSchema = new Schema({
 // Appointment Schema
 const appointmentSchema = new Schema({
   finished: { type: Boolean, default: false },
-  patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },
-  doctor: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true },
-  dateAndTime: { type: Date, required: true },
-  observations: { type: String },
-  appointmentURL: { type: String },
+  patientId: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },
+  doctorId: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true },
+  date: { type: String, required: true },
+  timeId: { type: Number, required: true },
+  // observations: { type: String },
+  // appointmentURL: { type: String },
   motive: { type: String, required: true }
 });
 
 // Model creation
 const User = mongoose.model('User', userSchema);
-const Appointment = mongoose.model('Appointment', appointmentSchema);
 const Doctor = mongoose.model('Doctor', doctorSchema);
 const Specialty = mongoose.model('Specialty', specialtySchema);
 const Patient = mongoose.model('Patient', patientSchema);
 const AvailableAppointment = mongoose.model('AvailableAppointment', availableAppointmentSchema);
+const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 // Export models
 module.exports = {
   User,
-  Appointment,
   Doctor,
   Specialty,
   Patient,
-  AvailableAppointment
+  AvailableAppointment,
+  Appointment,
 };

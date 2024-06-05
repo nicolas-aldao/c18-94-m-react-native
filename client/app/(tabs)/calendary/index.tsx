@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { Link, router, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Hours } from "@/constants";
 import { MedConnectContext } from "@/context";
 import { useFetch } from "@/hooks/useFetch";
@@ -87,10 +87,6 @@ export default function CalendaryScreen() {
                     setItems={setItems}
                     disabled={selectedDate === ''}
                 />
-                {/* <Link href="/motive" onPress={
-                }}>
-                    <ThemedText>Confimar</ThemedText>
-                </Link> */}
                 <BigButton text="Confirmar" onPress={() => {
                     setUser({
                         ...user,

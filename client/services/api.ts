@@ -60,7 +60,21 @@ export class WebApiService implements MedConnectProvider {
     };
 
     getUpcomingAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
-        return;
+        try {
+            const res = await axios.get(`${API_URL}/api/appointment?patientId=${id}&finished=false`);
+            console.log('res', id)
+            if (res) {
+                return responseMiddleware(res?.data);
+            } else {
+                throw new Error("error!");
+            }
+        } catch (err: any) {
+            if (err.message === "Network Error") {
+                throw new Error("Error de configuración de Axios, revisar ip o archivo constants");
+            } else {
+                throw new Error("Error!");
+            }
+        }
     };
 
     getCompletedAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {

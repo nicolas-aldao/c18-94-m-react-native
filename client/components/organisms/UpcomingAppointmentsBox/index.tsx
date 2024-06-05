@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { router } from "expo-router"
 import { Colors } from "@/constants/Styles"
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton"
@@ -9,9 +9,11 @@ import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment"
 import { Hours } from "@/constants"
 import { Spacer } from "@/components/atoms/Spacer"
 import { UpcomingAppointmentSkeleton } from "@/components/molecules/UpcomingAppointment/skeleton"
+import { MedConnectContext } from "@/context"
 
 export const UpcomingAppointmentsBox = () => {
-	const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: "getUpcomingAppointmentsByIdPatient", initialData: [] })
+	const { user } = useContext(MedConnectContext);
+	const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: "getUpcomingAppointmentsByIdPatient", param: user.id, initialData: [] })
 
 	return (
 		<SectionContainer>
