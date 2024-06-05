@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { ActivityIndicator } from "react-native";
 import { AnimatePresence } from "moti";
 import { router } from "expo-router";
 import { MedConnectContext } from "@/context";
+import { Hours } from "@/constants";
+import { useFetch } from "@/hooks/useFetch";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { Info } from "@/components/containers/Info";
 import { BottomButton } from "@/components/containers/BottomButton";
@@ -10,9 +13,6 @@ import { Spacer } from "@/components/atoms/Spacer";
 import { TopBar } from "@/components/molecules/TopBar";
 import { AppointmentConfirmationModal } from "@/components/organisms/AppointmentConfirmationModal";
 import { BigPrimaryButton } from "@/components/atoms/BigPrimaryButton";
-import { useFetch } from "@/hooks/useFetch";
-import { ActivityIndicator } from "react-native";
-import { Hours } from "@/constants";
 
 export default function AppointmentConfirmationScreen() {
     const { user } = useContext(MedConnectContext);
@@ -61,7 +61,7 @@ export default function AppointmentConfirmationScreen() {
             <AnimatePresence>
                 <AppointmentConfirmationModal isVisible={openModal} onClose={() => {
                     setOpenModal(false);
-                    router.push('/?refresh=true')
+                    router.push('/')
                 }} />
             </AnimatePresence>
         </>

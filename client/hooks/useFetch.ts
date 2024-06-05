@@ -14,10 +14,9 @@ type useFetchOptions = {
     initialData?: any;
     param?: any;
     body?: any;
-    refresh?: boolean;
 };
 
-export const useFetch = <T>({ serviceMethod, method = 'GET', param, body, initialData = [], refresh = false }: useFetchOptions): ApiResponse<T> => {
+export const useFetch = <T>({ serviceMethod, method = 'GET', param, body, initialData = [] }: useFetchOptions): ApiResponse<T> => {
     const [data, setData] = useState<any | undefined>(initialData);
     const [isLoading, setIsLoading] = useState(method === 'GET');
     const [errorMessage, setErrorMessage] = useState<string | undefined>(
@@ -53,13 +52,6 @@ export const useFetch = <T>({ serviceMethod, method = 'GET', param, body, initia
     useEffect(() => {
         fetchData();
     }, [serviceMethod, body]);
-
-    useEffect(() => {
-        if (refresh) {
-            setIsLoading(true);
-            fetchData();
-        }
-    }, [refresh]);
 
     return { data: data!, isLoading, errorMessage };
 }
