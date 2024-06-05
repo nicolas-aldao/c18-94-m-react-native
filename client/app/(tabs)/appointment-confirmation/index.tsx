@@ -18,21 +18,21 @@ export default function AppointmentConfirmationScreen() {
     const { user } = useContext(MedConnectContext);
     const [openModal, setOpenModal] = useState(false);
     const [body, setBody] = useState(undefined);
-    const { data: appointment, isLoading, errorMessage } = useFetch({ serviceMethod: 'postAppointment', method: 'POST', body: body, initialData: undefined })
+    const { data: appointment, isLoading, errorMessage } = useFetch({ serviceMethod: 'postAppointment', method: 'POST', body: body, initialData: null })
 
     useEffect(() => {
         appointment && setOpenModal(true)
     }, [appointment])
 
     const bookAppointment = () => {
-        setBody({
-            patientId: user?.id,
-            doctorId: user?.doctor?.id,
-            date: user?.appointment?.date,
-            timeId: user?.appointment?.time,
-            motive: user?.appointment?.motive
-        })
-        setOpenModal(true)
+        // setBody({
+        //     patientId: user?.id,
+        //     doctorId: user?.doctor?.id,
+        //     date: user?.appointment?.date,
+        //     timeId: user?.appointment?.time,
+        //     motive: user?.appointment?.motive
+        // })
+        setOpenModal(true);
     }
 
     return (
@@ -61,7 +61,7 @@ export default function AppointmentConfirmationScreen() {
             <AnimatePresence>
                 <AppointmentConfirmationModal isVisible={openModal} onClose={() => {
                     setOpenModal(false);
-                    // router.push('/')
+                    router.push('/?refresh=true')
                 }} />
             </AnimatePresence>
         </>

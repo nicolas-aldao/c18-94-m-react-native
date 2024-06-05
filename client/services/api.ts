@@ -95,11 +95,9 @@ export class WebApiService implements MedConnectProvider {
     };
 
     postAppointment = async (body: any): Promise<any[] | undefined> => {
-        console.log('body ', body)
         try {
             const res = await axios.post(`${API_URL}/api/appointment`, body);
             if (res) {
-                console.log('ress post', res);
                 return responseMiddleware(res?.data);
             } else {
                 throw new Error("error!");
