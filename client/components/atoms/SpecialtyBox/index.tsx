@@ -1,10 +1,11 @@
 
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { getSpecialtyImage } from "@/helpers/image";
 import { ThemedText } from "../ThemedText";
 import { useRouter } from "expo-router";
+import { MedConnectContext } from "@/context";
 
 interface SpecialtyBoxProps {
     image_url: any;
@@ -13,11 +14,23 @@ interface SpecialtyBoxProps {
 }
 
 export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name, id }) => {
+    const { user, setUser } = useContext(MedConnectContext);
     const specialtyImage = getSpecialtyImage(image_url);
     const navigation = useRouter();
 
+    const onPress = () => {
+        setUser({
+            ...user,
+            doctor: {
+                ...user.doctor,
+                specialty: name
+            }
+        })
+        navigation.push(`/doctors?id=${id}`)
+    }
+
     return (
-        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.push(`/doctors?id=${id}`)}>
+        <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
             <LinearGradient
                 colors={['#253332', '#495251']}
                 start={{ x: 0, y: 0 }}

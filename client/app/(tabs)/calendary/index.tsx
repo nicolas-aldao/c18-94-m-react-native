@@ -93,7 +93,7 @@ export default function CalendaryScreen() {
                         appointment: {
                             ...user.appointment,
                             date: selectedDate,
-                            time: Hours[value]
+                            time: value
                         }
                     })
                     router.push("/motive")

@@ -12,4 +12,5 @@ export abstract class MedConnectProvider {
     abstract getUpcomingAppointmentsByIdPatient(id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined>;
     abstract getCompletedAppointmentsByIdPatient(id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined>;
     // abstract getCanceledAppointmentsByIdPatient(id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined>;
+    abstract postAppointment(body: any): Promise<any[] | undefined>;
 }

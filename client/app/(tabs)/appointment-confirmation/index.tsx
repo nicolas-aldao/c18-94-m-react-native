@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AnimatePresence } from "moti";
 import { router } from "expo-router";
 import { MedConnectContext } from "@/context";
@@ -6,28 +6,47 @@ import { CenteredView } from "@/components/containers/CenteredView";
 import { Info } from "@/components/containers/Info";
 import { BottomButton } from "@/components/containers/BottomButton";
 import { ThemedText } from "@/components/atoms/ThemedText";
-import { BigButton } from "@/components/atoms/BigButton";
 import { Spacer } from "@/components/atoms/Spacer";
 import { TopBar } from "@/components/molecules/TopBar";
 import { AppointmentConfirmationModal } from "@/components/organisms/AppointmentConfirmationModal";
-import { Colors } from "@/constants/Styles";
 import { BigPrimaryButton } from "@/components/atoms/BigPrimaryButton";
+import { useFetch } from "@/hooks/useFetch";
+import { ActivityIndicator } from "react-native";
+import { Hours } from "@/constants";
 
 export default function AppointmentConfirmationScreen() {
     const { user } = useContext(MedConnectContext);
     const [openModal, setOpenModal] = useState(false);
+    const [body, setBody] = useState(undefined);
+    const { data: appointment, isLoading, errorMessage } = useFetch({ serviceMethod: 'postAppointment', method: 'POST', body: body, initialData: undefined })
+
+    useEffect(() => {
+        appointment && setOpenModal(true)
+    }, [appointment])
+
+    const bookAppointment = () => {
+        setBody({
+            patientId: user?.id,
+            doctorId: user?.doctor?.id,
+            date: user?.appointment?.date,
+            timeId: user?.appointment?.time,
+            motive: user?.appointment?.motive
+        })
+        setOpenModal(true)
+    }
 
     return (
         <>
             <TopBar title="Confirmá tu turno" backArrow />
             <CenteredView>
+                {isLoading && <ActivityIndicator />}
                 <Info widthParam="298px" heightParam="292px" color="#EEF5F9">
                     <ThemedText>Paciente: {user?.name}</ThemedText>
                     <ThemedText>DNI: {user?.dni}</ThemedText>
                     <Spacer height={30} />
                     <ThemedText>Especialista: ESPECIALISTA</ThemedText>
                     <ThemedText>Fecha: {user?.appointment?.date}</ThemedText>
-                    <ThemedText>Hora: {user?.appointment?.time}</ThemedText>
+                    <ThemedText>Hora: {Hours[user?.appointment?.time]}</ThemedText>
                     <ThemedText>Motivo de consulta: {user?.appointment?.motive}</ThemedText>
                 </Info>
                 <Spacer height={50} />
@@ -36,13 +55,13 @@ export default function AppointmentConfirmationScreen() {
                 </Info>
             </CenteredView>
             <BottomButton>
-                <BigPrimaryButton text="Confirmar" onPress={() => setOpenModal(true)} />
+                <BigPrimaryButton text="Confirmar" onPress={bookAppointment} />
                 <Spacer height={30} />
             </BottomButton>
             <AnimatePresence>
                 <AppointmentConfirmationModal isVisible={openModal} onClose={() => {
                     setOpenModal(false);
-                    router.push('/')
+                    // router.push('/')
                 }} />
             </AnimatePresence>
         </>

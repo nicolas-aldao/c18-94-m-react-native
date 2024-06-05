@@ -1,21 +1,27 @@
 const Router = require('express')
 const { Appointment } = require('../models/schemas')
 
-
 const appointmentRouter = Router()
 
 appointmentRouter.get('/', async (req, res, next) => {
 	const { patientId, finished } = req.query;
 	try {
 		let query = { patientId, finished };
-		// const foundDoctor = await Specialty.findById(specialtyId)
-		const foundAppointments = await Appointment.find(query).populate('doctorId').populate({
-			path: 'doctorId',
-			populate: {
-				path: 'specialty',
-				model: 'Specialty'
-			}
-		});
+
+		const foundAppointments = await Appointment.find(query).populate('doctorId')
+			.populate({
+				path: 'doctorId',
+				populate: [
+					{
+						path: 'specialty',
+						model: 'Specialty'
+					},
+					{
+						path: 'user',
+						model: 'User'
+					}
+				]
+			});
 
 		const formattedAppointments = foundAppointments.map(appointment => {
 			return {
@@ -23,7 +29,7 @@ appointmentRouter.get('/', async (req, res, next) => {
 				finished: appointment.finished,
 				patientId: appointment.patientId,
 				doctorName: appointment.doctorId.user.name,
-				// doctorImg: appointment.user.profile_pic,
+				doctorImg: appointment.doctorId.user.profile_pic,
 				specialtyName: appointment.doctorId.specialty.name,
 				date: appointment.date,
 				timeId: appointment.timeId
@@ -44,11 +50,7 @@ appointmentRouter.post('/', async (req, res, next) => {
 
 		const appointment = new Appointment({ patientId, doctorId, date, timeId, motive });
 		await appointment.save();
-		// const populatedAvailableAppointment = await AvailableAppointment.findById(availableAppointment._id)
-		//     .populate('doctor')
-		// console.log('availableAppointment created:', availableAppointment);
 
-		// req.data = populatedAvailableAppointment;
 		req.data = appointment;
 		req.statusCode = 201;
 		next()
@@ -57,5 +59,19 @@ appointmentRouter.post('/', async (req, res, next) => {
 		next(error)
 	}
 })
+
+appointmentRouter.delete('/', async (req, res, next) => {
+	try {
+		const deleteResult = await Appointment.deleteMany({});
+
+		if (deleteResult.deletedCount === 0) {
+			return res.status(404).json({ message: 'No se encontraron registros para eliminar' });
+		}
+
+		res.status(200).json({ message: `Se eliminaron ${deleteResult.deletedCount} registros correctamente` });
+	} catch (error) {
+		next(error);
+	}
+});
 
 module.exports = appointmentRouter

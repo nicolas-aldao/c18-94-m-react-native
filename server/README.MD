@@ -1,9 +1,20 @@
 ## GET ALL SPECIALTIES
-GET - http://localhost:3000/api/specialty
+/api/specialty
 devuelve todas las especialidades
 
 ## GET DOCTOR BY NAME / SPECIALTY_ID
-GET - http://localhost:3000/api/doctor?specialtyId=664e7e8fa853520082ed6101&name=andres
+/api/doctor?specialtyId=664e7e8fa853520082ed6101&name=andres
 recibe por query "specialtyId" para el ID de specialty y "name" para nombre de doctor
 en caso de no recibir "name", devuelve todos los doctores por especialidad
+
+## GET AVAILABLE APPOINTMENTS BY DOCTOR ID / TAKEN
+/api/available-appointment?doctorId=665fabe08177399fde1a037c&taken=false
+Recibe doctorId y taken para determinar si los turnos que nos vamos a traer están disponibles o no, siendo su valor true o false según necesitemos.
+
+
+## GET APPOINTMENTS BY PATIENT ID / FINISHED
+/api/appointment?patientId=333333333333333333333333&finished=false
+
+## DELETE ALL APPOINTMENTS 
+/api/appointment
 

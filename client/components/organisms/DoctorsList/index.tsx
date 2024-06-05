@@ -5,14 +5,17 @@ import { DoctorItemRowSkeleton } from "../DoctorItemRow/skeleton";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Doctor } from "@/types/doctor";
 import { ListContainer, StyledView, ItemContainer } from "./styles";
+import { MedConnectContext } from "@/context";
+import { useContext } from "react";
 
 export const DoctorsList = () => {
     const { id } = useLocalSearchParams();
+    const { user } = useContext(MedConnectContext);
     const { data: doctors, isLoading, errorMessage } = useFetch({ serviceMethod: 'getDoctorsByIdSpecialty', param: id, initialData: [] });
 
     return (
         <StyledView>
-            <ThemedText type="header-subtitle" style={{ marginBottom: 17 }}>Selecciona un especialista en ESPECIALIDAD</ThemedText>
+            <ThemedText type="header-subtitle" style={{ marginBottom: 17 }}>Selecciona un especialista en {user?.doctor.specialty}</ThemedText>
             {
                 isLoading &&
                 <ListContainer>

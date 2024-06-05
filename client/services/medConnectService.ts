@@ -11,6 +11,8 @@ export class MedConnectService {
     private upcomingAppointmentsByIdPatient: ScheduledAppointmentsByIdPatient[] = [];
     private completedAppointmentsByIdPatient: ScheduledAppointmentsByIdPatient[] = [];
 
+    private createdAppointment: ScheduledAppointmentsByIdPatient[] = [];
+
     constructor(private medConnectProvider: MedConnectProvider) { }
 
     async getSpecialties() {
@@ -41,6 +43,12 @@ export class MedConnectService {
         this.completedAppointmentsByIdPatient = await this.medConnectProvider.getCompletedAppointmentsByIdPatient(id) ?? [];
 
         return this.completedAppointmentsByIdPatient;
+    }
+
+    async postAppointment(body: any) {
+        this.createdAppointment = await this.medConnectProvider.postAppointment(body) ?? [];
+
+        return this.createdAppointment;
     }
 }
 

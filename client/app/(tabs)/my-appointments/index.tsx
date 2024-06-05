@@ -1,11 +1,10 @@
 // NEEDS REFACTOR!!
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment";
 import { Colors } from "@/constants/Styles";
 import { useFetch } from "@/hooks/useFetch";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { Spacer } from "@/components/atoms/Spacer";
-import { ThemedText } from "@/components/atoms/ThemedText";
 import { RoundedLittleButton } from "@/components/atoms/RoundedLittleButton";
 import { TopBar } from "@/components/molecules/TopBar";
 import { UpcomingMedicalAppointments } from "@/components/organisms/DoctorItemRow/UpcomingMedicalAppointments";
@@ -13,10 +12,13 @@ import { MedicalAppointmentTemplate } from "@/components/organisms/DoctorItemRow
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton";
 import { StyledView } from "./styles";
 import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/skeleton";
+import { MedConnectContext } from "@/context";
+import { ScrollView } from "moti";
 
 export default function MyAppointmentsScreen() {
+    const { user } = useContext(MedConnectContext);
     const [serviceMethod, setServiceMethod] = useState('getUpcomingAppointmentsByIdPatient')
-    const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: serviceMethod, initialData: [] })
+    const { data: appointments, isLoading, errorMessage } = useFetch({ serviceMethod: serviceMethod, param: user.id, initialData: [] })
     const [isLoadingInternal, setIsLoadingInternal] = useState(false);
 
     const wait = async () => {
@@ -41,20 +43,22 @@ export default function MyAppointmentsScreen() {
                     </>
                 ))}
                 {(appointments?.length > 0) && (
-                    !isLoadingInternal && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
-                        <>
-                            {serviceMethod === "getUpcomingAppointmentsByIdPatient" ?
-                                <UpcomingMedicalAppointments
-                                    key={appoint._id}
-                                    image_url={{ uri: appoint.doctorImg }} name={appoint.doctorName}
-                                    specialty={appoint.specialtyName} date={appoint.date} time={appoint.timeId} />
-                                : <MedicalAppointmentTemplate key={appoint._id}
-                                    image_url={{ uri: appoint.doctorImg }} name={appoint.doctorName} specialty="Cardiology">
-                                    <RoundedLittleButton text="Detalles" onPress={() => console.log('pressed')} />
-                                </MedicalAppointmentTemplate>}
-                            <Spacer height={15} />
-                        </>
-                    )
+                    <ScrollView>
+                        {!isLoadingInternal && appointments?.map((appoint: ScheduledAppointmentsByIdPatient, index: number) =>
+                            <>
+                                {serviceMethod === "getUpcomingAppointmentsByIdPatient" ?
+                                    <UpcomingMedicalAppointments
+                                        key={appoint._id}
+                                        image_url={{ uri: appoint.doctorImg }} name={appoint.doctorName}
+                                        specialty={appoint.specialtyName} date={appoint.date} time={appoint.timeId} />
+                                    : <MedicalAppointmentTemplate key={appoint._id}
+                                        image_url={{ uri: appoint.doctorImg }} name={appoint.doctorName} specialty="Cardiology">
+                                        <RoundedLittleButton text="Detalles" onPress={() => console.log('pressed')} />
+                                    </MedicalAppointmentTemplate>}
+                                <Spacer height={15} />
+                            </>
+                        )}
+                    </ScrollView>
                 )}
             </CenteredView>
         </>

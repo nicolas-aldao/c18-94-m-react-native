@@ -59,10 +59,27 @@ export class WebApiService implements MedConnectProvider {
         }
     };
 
+    // NEEDS REFACTOR!!
     getUpcomingAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
         try {
             const res = await axios.get(`${API_URL}/api/appointment?patientId=${id}&finished=false`);
-            console.log('res', id)
+            if (res) {
+                return responseMiddleware(res?.data);
+            } else {
+                throw new Error("error!");
+            }
+        } catch (err: any) {
+            if (err.message === "Network Error") {
+                throw new Error("Error de configuración de Axios, revisar ip o archivo constants");
+            } else {
+                throw new Error("Error!");
+            }
+        }
+    };
+    // NEEDS REFACTOR!!
+    getCompletedAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
+        try {
+            const res = await axios.get(`${API_URL}/api/appointment?patientId=${id}&finished=true`);
             if (res) {
                 return responseMiddleware(res?.data);
             } else {
@@ -77,8 +94,22 @@ export class WebApiService implements MedConnectProvider {
         }
     };
 
-    getCompletedAppointmentsByIdPatient = async (id: string): Promise<ScheduledAppointmentsByIdPatient[] | undefined> => {
-        return;
-    };
-
+    postAppointment = async (body: any): Promise<any[] | undefined> => {
+        console.log('body ', body)
+        try {
+            const res = await axios.post(`${API_URL}/api/appointment`, body);
+            if (res) {
+                console.log('ress post', res);
+                return responseMiddleware(res?.data);
+            } else {
+                throw new Error("error!");
+            }
+        } catch (err: any) {
+            if (err.message === "Network Error") {
+                throw new Error("Error de configuración de Axios, revisar ip o archivo constants");
+            } else {
+                throw new Error("Error!");
+            }
+        }
+    }
 }

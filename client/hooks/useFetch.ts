@@ -10,21 +10,30 @@ interface ApiResponse<T> {
 
 type useFetchOptions = {
     serviceMethod: keyof typeof medConnectService;
+    method?: string;
     initialData?: any;
     param?: any;
     body?: any;
 };
 
-export const useFetch = <T>({ serviceMethod, param, body, initialData = [] }: useFetchOptions): ApiResponse<T> => {
+export const useFetch = <T>({ serviceMethod, method = 'GET', param, body, initialData = [] }: useFetchOptions): ApiResponse<T> => {
     const [data, setData] = useState<any | undefined>(initialData);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(method === 'GET');
     const [errorMessage, setErrorMessage] = useState<string | undefined>(
         undefined
     );
 
     const fetchData = async () => {
         try {
-            const response = await medConnectService[serviceMethod](param);
+            let response;
+            if (method === 'POST') {
+                if (body) {
+                    setIsLoading(true)
+                    response = await medConnectService[serviceMethod](body);
+                }
+            } else {
+                response = await medConnectService[serviceMethod](param);
+            }
             setData(response);
         } catch (error) {
             const axiosError = error as AxiosError;
