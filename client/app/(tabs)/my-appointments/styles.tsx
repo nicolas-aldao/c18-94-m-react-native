@@ -7,4 +7,10 @@ export const StyledView = styled(View)`
     justify-content: space-evenly;
     padding: 25px 25px 0 25px;
     background-color: ${Colors.light.background}
+    `;
+
+export const EmptyStateContainer = styled(View)`
+    justify-content: center;
+    padding: 25px;
+    height: 100%;
 `;

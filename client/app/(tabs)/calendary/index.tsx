@@ -60,8 +60,8 @@ export default function CalendaryScreen() {
             .filter(item => item.date === selectedDate)
             .map(select => {
                 const timeId: number = select.timeId;
-                const fruit = Hours[timeId] || 'Unknown';
-                return { label: fruit, value: timeId };
+                const timeDescription = Hours[timeId] || 'Unknown';
+                return { label: timeDescription, value: timeId };
             });
         setItems(timeDropdown)
     }, [selectedDate])
@@ -89,17 +89,19 @@ export default function CalendaryScreen() {
                     setItems={setItems}
                     disabled={selectedDate === ''}
                 />
-                <BigButton text="Confirmar" onPress={() => {
-                    setUser({
-                        ...user,
-                        appointment: {
-                            ...user.appointment,
-                            date: selectedDate,
-                            time: value
-                        }
-                    })
-                    router.push("/motive")
-                }} />
+                <BigButton text="Confirmar"
+                    disabled={selectedDate === '' || !value}
+                    onPress={() => {
+                        setUser({
+                            ...user,
+                            appointment: {
+                                ...user.appointment,
+                                date: selectedDate,
+                                time: value
+                            }
+                        })
+                        router.push("/motive")
+                    }} />
             </CenteredView>
         </>
     )

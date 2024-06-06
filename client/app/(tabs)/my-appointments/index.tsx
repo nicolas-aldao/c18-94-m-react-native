@@ -10,10 +10,11 @@ import { TopBar } from "@/components/molecules/TopBar";
 import { UpcomingMedicalAppointments } from "@/components/organisms/DoctorItemRow/UpcomingMedicalAppointments";
 import { MedicalAppointmentTemplate } from "@/components/organisms/DoctorItemRow/Common/MedicalAppointmentTemplate.tsx";
 import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton";
-import { StyledView } from "./styles";
+import { EmptyStateContainer, StyledView } from "./styles";
 import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/skeleton";
 import { MedConnectContext } from "@/context";
 import { ScrollView } from "moti";
+import { EmptyStateText } from "@/components/organisms/UpcomingAppointmentsBox/styles";
 
 export default function MyAppointmentsScreen() {
     const { user } = useContext(MedConnectContext);
@@ -60,6 +61,13 @@ export default function MyAppointmentsScreen() {
                         )}
                     </ScrollView>
                 )}
+                {(!isLoading && appointments?.length === 0) &&
+                    <>
+                        <EmptyStateContainer>
+                            <EmptyStateText>Todavía no tenés turnos que mostrar</EmptyStateText>
+                        </EmptyStateContainer>
+                    </>
+                }
             </CenteredView>
         </>
     )

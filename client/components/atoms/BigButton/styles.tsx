@@ -11,4 +11,7 @@ export const StyledTouchableOpacity = styled(TouchableOpacity)`
     align-items: center;
     border-radius: 100px;
     border: ${(props) => props.borderStyle ?? "1px solid #253332"};
+    ${(props) => props.disabled &&
+        `opacity: 0.5;`
+    }
 `;

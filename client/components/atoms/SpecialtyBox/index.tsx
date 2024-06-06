@@ -41,7 +41,7 @@ export const SpecialtyBox: FC<SpecialtyBoxProps> = ({ image_url, name, id }) => 
                     source={specialtyImage}
                     // implementación cuando nos trae la imagen desde una url
                     //source={{ uri: 'https://reactnative.dev/img/tiny_logo.png', }}
-                    style={{ width: 31, height: 39 }}
+                    style={{ width: 43, height: 43 }}
                 />
                 <ThemedText type="specialty-box">{name}</ThemedText>
             </LinearGradient>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 10,
         paddingHorizontal: 8,
-        marginVertical: 17,
+        marginBottom: 20,
         marginHorizontal: 5,
         width: 93,
         height: 92,

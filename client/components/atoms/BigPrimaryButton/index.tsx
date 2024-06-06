@@ -8,11 +8,12 @@ import { Colors } from "@/constants/Styles";
 type BigPrimaryButtonProps = {
     text: string;
     onPress: () => void;
+    disabled?: boolean;
 }
 
-export const BigPrimaryButton: FC<BigPrimaryButtonProps> = ({ text, onPress }) => {
+export const BigPrimaryButton: FC<BigPrimaryButtonProps> = ({ text, onPress, disabled }) => {
     return (
         <BigButton text={text} onPress={onPress} color={Colors.light.primary}
-            borderStyle="none" typeText="main-button-bold" />
+            borderStyle="none" typeText="main-button-bold" disabled={disabled} />
     )
 }

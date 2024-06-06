@@ -7,5 +7,5 @@ export const StyledContainer = styled(View)`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 17px 5px;
+    margin: 0 5px 20px 5px;
 `;

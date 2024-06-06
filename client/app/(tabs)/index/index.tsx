@@ -7,6 +7,7 @@ import { SpecialtiesList } from "@/components/organisms/SpecialtiesList";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Link } from "expo-router";
 import { TitleSection } from "./styles";
+import { Spacer } from "@/components/atoms/Spacer";
 
 export default function HomeScreen() {
     const { user } = useContext(MedConnectContext);
@@ -16,6 +17,7 @@ export default function HomeScreen() {
             <TopBar title={`Hola, ${user.name}!`} />
             <CenteredView>
                 {/* NEEDS REFACTOR!! */}
+                <Spacer height={10} />
                 <TitleSection>
                     <ThemedText type="section">Mis turnos</ThemedText>
                     <Link href='/my-appointments'>
@@ -23,6 +25,7 @@ export default function HomeScreen() {
                     </Link>
                 </TitleSection>
                 <UpcomingAppointmentsBox />
+                <Spacer height={15} />
                 {/* NEEDS REFACTOR!! */}
                 <TitleSection>
                     <ThemedText type="section">Especialidades</ThemedText>

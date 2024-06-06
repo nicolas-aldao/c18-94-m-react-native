@@ -9,11 +9,13 @@ type BigButtonProps = {
     color?: string;
     borderStyle?: string;
     typeText?: string;
+    disabled?: boolean;
 }
 
-export const BigButton: FC<BigButtonProps> = ({ text, onPress, color, borderStyle, typeText }) => {
+export const BigButton: FC<BigButtonProps> = ({ text, onPress, color, borderStyle, typeText, disabled }) => {
     return (
-        <StyledTouchableOpacity color={color} borderStyle={borderStyle} onPress={onPress}>
+        <StyledTouchableOpacity color={color} borderStyle={borderStyle} onPress={onPress}
+            disabled={disabled}>
             <ThemedText type={typeText ?? "main-button"}>
                 {text}
             </ThemedText>

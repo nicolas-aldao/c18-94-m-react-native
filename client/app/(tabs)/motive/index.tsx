@@ -38,7 +38,8 @@ export default function MotiveScreen() {
                 />
             </CenteredView>
             <BottomButton>
-                <BigButton text="Continuar" onPress={updateMotive} />
+                <BigButton text="Continuar" onPress={updateMotive}
+                    disabled={text.length < 5} />
                 <Spacer height={30} />
             </BottomButton>
         </>
