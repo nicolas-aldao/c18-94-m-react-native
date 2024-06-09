@@ -1,9 +1,9 @@
-import React from 'react';
-import { Tabs } from 'expo-router';
+import React from "react";
+import { Tabs } from "expo-router";
 
-import { Colors } from '@/constants/Styles';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { Colors } from "@/constants/Styles";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -11,44 +11,54 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].primary,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].primary,
         headerShown: false,
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index/index"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "home" : "home-outline"}
+              color={color}
+            />
           ),
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
         name="specialties/index"
         options={{
-          title: 'Especialidades',
+          title: "Especialidades",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'medical' : 'medical-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "medical" : "medical-outline"}
+              color={color}
+            />
           ),
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
         name="my-medical-history/index"
         options={{
-          title: 'Mi historial',
+          title: "Mi historial",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name='menu' color={color} />
+            <TabBarIcon name="menu" color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="my-appointments/index"
         options={{
-          title: 'Mis Turnos',
+          title: "Mis Turnos",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "calendar" : "calendar-outline"}
+              color={color}
+            />
           ),
         }}
       />
@@ -56,6 +66,7 @@ export default function TabLayout() {
         name="doctors/index"
         options={{
           href: null,
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
@@ -68,21 +79,21 @@ export default function TabLayout() {
         name="calendary/index"
         options={{
           href: null,
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
         name="motive/index"
         options={{
           href: null,
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen
         name="appointment-confirmation/index"
         options={{
           href: null,
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       />
     </Tabs>

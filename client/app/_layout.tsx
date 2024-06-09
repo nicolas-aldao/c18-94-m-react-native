@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { MedConnectContext } from '@/context';
+import { useEffect, useState } from "react";
+import { DarkTheme, ThemeProvider } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { MedConnectContext } from "@/context";
+import { DefaultTheme } from "@/constants/Styles";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -12,9 +14,16 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
-  const [user, setUser] = useState({ id: "333333333333333333333333", isDoctor: false, name: "John Doe", dni: "12345678", appointment: { motive: "", date: "", time: "" }, doctor: { id: "", name: "", specialty: "" } });
+  const [user, setUser] = useState({
+    id: "333333333333333333333333",
+    isDoctor: false,
+    name: "John Doe",
+    dni: "12345678",
+    appointment: { motive: "", date: "", time: "" },
+    doctor: { id: "", name: "", specialty: "" },
+  });
 
   useEffect(() => {
     if (loaded) {
@@ -27,7 +36,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <MedConnectContext.Provider value={{ user, setUser }}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
