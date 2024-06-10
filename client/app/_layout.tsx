@@ -17,7 +17,7 @@ export default function RootLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
   const [user, setUser] = useState({
-    id: "333333333333333333333333",
+    id: "6666458967d6e7ebe8427ea1",
     isDoctor: false,
     name: "John Doe",
     dni: "12345678",
