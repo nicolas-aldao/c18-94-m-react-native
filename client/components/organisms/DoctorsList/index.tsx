@@ -16,7 +16,7 @@ export const DoctorsList = () => {
     data: doctors,
     isLoading,
     errorMessage,
-  } = useFetch<any[]>({
+  } = useFetch<Doctor[]>({
     serviceMethod: "getDoctorsByIdSpecialty",
     param: id,
     initialData: [],

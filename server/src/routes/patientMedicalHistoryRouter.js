@@ -14,9 +14,15 @@ patientMedicalHistoryRouter.get("/", async (req, res, next) => {
     const foundPatientMedicalHistory = await PatientMedicalHistory.find({
       patient: patientId,
     })
-      .populate("patient")
-      .populate("doctor")
-      .populate("specialty");
+      .populate({
+        path: "doctor",
+        select: "user",
+        populate: {
+          path: "user",
+          select: "name",
+        },
+      })
+      .populate({ path: "specialty", select: "name" });
 
     req.statusCode = 200;
     req.data = foundPatientMedicalHistory;

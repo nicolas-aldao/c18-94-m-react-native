@@ -7,6 +7,7 @@ import { Specialty } from "@/types/specialty";
 import { Doctor } from "@/types/doctor";
 import { AvailableAppointments } from "@/types/available-appointment";
 import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment";
+import { MedicalHistory } from "@/types/medical-history";
 
 export class WebApiService implements MedConnectProvider {
   getSpecialties = async (): Promise<Specialty[] | undefined> => {
@@ -122,6 +123,29 @@ export class WebApiService implements MedConnectProvider {
   postAppointment = async (body: any): Promise<any[] | undefined> => {
     try {
       const res = await axios.post(`${API_URL}/api/appointment`, body);
+      if (res) {
+        return responseMiddleware(res?.data);
+      } else {
+        throw new Error("error!");
+      }
+    } catch (err: any) {
+      if (err.message === "Network Error") {
+        throw new Error(
+          "Error de configuración de Axios, revisar ip o archivo constants"
+        );
+      } else {
+        throw new Error("Error!");
+      }
+    }
+  };
+
+  getMedicalHistoryByIdPatient = async (
+    id: string
+  ): Promise<MedicalHistory[] | undefined> => {
+    try {
+      const res = await axios.get(
+        `${API_URL}/api/medical-history?patientId=${id}`
+      );
       if (res) {
         return responseMiddleware(res?.data);
       } else {
