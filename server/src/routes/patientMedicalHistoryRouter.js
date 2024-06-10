@@ -32,7 +32,6 @@ patientMedicalHistoryRouter.post("/", async (req, res, next) => {
       req.body;
 
     if (!patientId || !doctorId || !specialtyId) {
-      console.log("entra!!");
       return res
         .status(400)
         .json({ error: "Patient, Doctor and Specialty is required" });
