@@ -1,20 +1,21 @@
 // TODO: NEEDS REFACTOR!!
-import { useContext, useState } from "react";
+import { Fragment, useContext, useState } from "react";
+import { ScrollView } from "moti";
+
 import { ScheduledAppointmentsByIdPatient } from "@/types/scheduled-appointment";
+import { MedConnectContext } from "@/context";
 import { Colors } from "@/constants/Styles";
 import { useFetch } from "@/hooks/useFetch";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { Spacer } from "@/components/atoms/Spacer";
+import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton";
 import { RoundedLittleButton } from "@/components/atoms/RoundedLittleButton";
 import { TopBar } from "@/components/molecules/TopBar";
 import { UpcomingMedicalAppointments } from "@/components/organisms/DoctorItemRow/UpcomingMedicalAppointments";
 import { MedicalAppointmentTemplate } from "@/components/organisms/DoctorItemRow/Common/MedicalAppointmentTemplate.tsx";
-import { RoundedLittlePrimaryButton } from "@/components/atoms/RoundedLittlePrimaryButton";
-import { EmptyStateContainer, StyledView } from "./styles";
 import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/skeleton";
-import { MedConnectContext } from "@/context";
-import { ScrollView } from "moti";
 import { EmptyStateText } from "@/components/organisms/UpcomingAppointmentsBox/styles";
+import { EmptyStateContainer, StyledView } from "./styles";
 
 export default function MyAppointmentsScreen() {
   const { user } = useContext(MedConnectContext);
@@ -80,17 +81,17 @@ export default function MyAppointmentsScreen() {
       <CenteredView>
         {(isLoading || isLoadingInternal) &&
           [...Array(4)].map((_, index) => (
-            <>
+            <Fragment key={index}>
               <DoctorItemRowSkeleton key={index} />
               <Spacer height={15} />
-            </>
+            </Fragment>
           ))}
         {appointments?.length > 0 && (
           <ScrollView>
             {!isLoadingInternal &&
               appointments?.map(
                 (appoint: ScheduledAppointmentsByIdPatient, index: number) => (
-                  <>
+                  <Fragment key={appoint._id}>
                     {serviceMethod === "getUpcomingAppointmentsByIdPatient" ? (
                       <UpcomingMedicalAppointments
                         key={appoint._id}
@@ -114,7 +115,7 @@ export default function MyAppointmentsScreen() {
                       </MedicalAppointmentTemplate>
                     )}
                     <Spacer height={15} />
-                  </>
+                  </Fragment>
                 )
               )}
           </ScrollView>
