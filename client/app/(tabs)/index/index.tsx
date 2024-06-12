@@ -8,7 +8,6 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 import { Link } from "expo-router";
 import { TitleSection } from "./styles";
 import { Spacer } from "@/components/atoms/Spacer";
-import { Pressable, StyleSheet, View, Image } from "react-native";
 
 export default function HomeScreen() {
   const { user } = useContext(MedConnectContext);
@@ -18,8 +17,10 @@ export default function HomeScreen() {
       <TopBar title={`Hola, ${user.name}!`} />
       <CenteredView>
         {/* TODO: NEEDS REFACTOR!! */}
-        <Link href="/other">
-          <ThemedText type="section">press me </ThemedText>
+        <Link href="/videocall">
+          <ThemedText type="section">
+            <ThemedText>Press meye</ThemedText>
+          </ThemedText>
         </Link>
         <Spacer height={10} />
         <TitleSection>

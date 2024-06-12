@@ -1,24 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+import ActiveCall from "@/components/ActiveCall";
+import { AppointmentDetail } from "@/components/organisms/AppointmentDetail";
 import { useKeepAwake } from "@sayem314/react-native-keep-awake";
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View, PermissionsAndroid, Platform } from "react-native";
-import {
-  ClientRoleType,
-  createAgoraRtcEngine,
-  IRtcEngine,
+import { useEffect, useRef, useState } from "react";
+import { PermissionsAndroid, Platform, View, StyleSheet } from "react-native";
+import createAgoraRtcEngine, {
   ChannelProfileType,
+  ClientRoleType,
+  IRtcEngine,
 } from "react-native-agora";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import ActiveCall from "@/components/ActiveCall";
-import InactiveoCall from "@/components/InactiveCall";
 
 export default function OtherScreen() {
+  console.log("hola!");
   useKeepAwake();
 
   const appId = "9e59ec728ba649dcb247e112747bccea";
@@ -31,6 +24,11 @@ export default function OtherScreen() {
   const [isJoined, setIsJoined] = useState(false);
   const [remoteUid, setRemoteUid] = useState(456); // Uid del usuario remoto
   const [isMute, setIsMute] = useState(false);
+  const [message, setMessage] = useState(undefined);
+
+  useEffect(() => {
+    console.log("🚀 ~ OtherScreen ~ isJoined:", isJoined);
+  }, [isJoined]);
 
   const getPermission = async () => {
     if (Platform.OS === "android") {
@@ -64,6 +62,7 @@ export default function OtherScreen() {
           setRemoteUid(0);
         },
         onError: (errorCode, msg) => {
+          console.log("Error Code", errorCode);
           console.log("Error Code", errorCode);
           console.log("Mesasge:", msg);
         },
@@ -138,22 +137,24 @@ export default function OtherScreen() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        {isJoined ? (
-          <ActiveCall
-            localUid={localUid}
-            remoteUid={remoteUid}
-            isMute={isMute}
-            onMuteMicPress={muteMic}
-            onSwitchCameraPress={switchCamera}
-            onLeavePress={leave}
-          />
-        ) : (
-          <InactiveoCall onJoinChannelPress={join} />
-        )}
-      </View>
-    </SafeAreaProvider>
+    <>
+      <SafeAreaProvider>
+        <View style={styles.container}>
+          {isJoined ? (
+            <ActiveCall
+              localUid={localUid}
+              remoteUid={remoteUid}
+              isMute={isMute}
+              onMuteMicPress={muteMic}
+              onSwitchCameraPress={switchCamera}
+              onLeavePress={leave}
+            />
+          ) : (
+            <AppointmentDetail onJoinChannelPress={join} />
+          )}
+        </View>
+      </SafeAreaProvider>
+    </>
   );
 }
 

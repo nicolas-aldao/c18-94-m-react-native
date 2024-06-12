@@ -97,9 +97,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="other/index"
+        name="videocall/index"
         options={{
           href: null,
+          unmountOnBlur: true,
         }}
       />
     </Tabs>
