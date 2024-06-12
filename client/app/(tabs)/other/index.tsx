@@ -28,9 +28,9 @@ export default function OtherScreen() {
   const localUid = 0;
 
   const agoraEngineRef = useRef<IRtcEngine>(); // Referencia a la instancia de Agora
-  const [isJoined, setIsJoined] = useState(false); // Indicador de que estamos conectados
+  const [isJoined, setIsJoined] = useState(false);
   const [remoteUid, setRemoteUid] = useState(456); // Uid del usuario remoto
-  const [isMute, setIsMute] = useState(false); // Indica si el usuario local se unio al canal
+  const [isMute, setIsMute] = useState(false);
 
   const getPermission = async () => {
     if (Platform.OS === "android") {
@@ -40,37 +40,6 @@ export default function OtherScreen() {
       ]);
     }
   };
-
-  // const setupVoiceSDKEngine = async () => {
-  //   try {
-  //     // usamos la funcion ya creada para obtener los permisos
-  //     await getPermission();
-
-  //     // Le damos el valor a nuestra instancia de Agora
-  //     agoraEngineRef.current = createAgoraRtcEngine();
-  //     const agoraEngine = agoraEngineRef.current;
-
-  //     agoraEngine.registerEventHandler({
-  //       onJoinChannelSuccess: () => {
-  //         // Este es un listener que se ejecutará cada vez que nos conectemos a un canal correctamente.
-  //         setIsJoined(true);
-  //       },
-  //       onUserJoined: (_connection, Uid) => {
-  //         // Este es un listener que nos dirá cuando un usuario se conecta
-  //         setRemoteUid(Uid);
-  //       },
-  //       onUserOffline: (_connection, Uid) => {
-  //         // Este es un listener que nos dira cuando un usuario se desconecta
-  //         setRemoteUid(0);
-  //       },
-  //     });
-  //     agoraEngine.initialize({
-  //       appId,
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
 
   const setupVideoSDKEngine = async () => {
     try {
@@ -126,13 +95,11 @@ export default function OtherScreen() {
       });
       // setIsJoined(true);
     } catch (e) {
-      // console.log("🚀 ~ join ~ e:", e)
       console.log(e);
     }
   };
 
   const leave = () => {
-    // Cuando deseamos salir del canal.
     try {
       agoraEngineRef.current?.leaveChannel();
 
@@ -166,14 +133,9 @@ export default function OtherScreen() {
 
   useEffect(() => {
     // Inicializamos el motor de Agora cuando inicia la app
-    // setupVoiceSDKEngine();
     setupVideoSDKEngine();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    // console.log("🚀 ~ App ~ isJoined:", isJoined)
-  }, [isJoined]);
 
   return (
     <SafeAreaProvider>

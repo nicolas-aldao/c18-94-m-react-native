@@ -28,22 +28,16 @@ export default function ActiveCall({
           style={styles.remoteVideoView}
         />
       ) : (
-        <View>
+        <View style={styles.emptyState}>
           <Text>Esperando a que alguien se una….</Text>
         </View>
       )}
       {/* Local user preview */}
       <RtcSurfaceView
         canvas={{ uid: localUid }}
-        style={
-          remoteUid === 0
-            ? styles.remoteVideoView
-            : // : [styles.localVideoView, { bottom: insets.bottom + 100 }]
-              styles.localVideoView
-        }
+        style={remoteUid === 0 ? styles.localVideoView : styles.remoteVideoView}
       />
       <View style={[styles.actionsContainer, { bottom: insets.bottom }]}>
-        {/* Boton para silenciar */}
         <Pressable
           style={styles.actionButtonContainer}
           onPress={onMuteMicPress}
@@ -58,8 +52,6 @@ export default function ActiveCall({
             resizeMode="contain"
           />
         </Pressable>
-
-        {/* Boton para cerrar la llamada */}
         <Pressable style={styles.leaveButtonContainer} onPress={onLeavePress}>
           <Image
             style={styles.buttonImage}
@@ -67,8 +59,6 @@ export default function ActiveCall({
             resizeMode="contain"
           />
         </Pressable>
-
-        {/* Boton para cambiar la camara */}
         <Pressable
           style={styles.actionButtonContainer}
           onPress={onSwitchCameraPress}
@@ -89,17 +79,14 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     width: "100%",
-    borderWidth: 3,
   },
   localVideoView: {
-    margin: 2,
-    height: 300,
-    width: 370,
+    height: "100%",
+    width: "100%",
   },
   remoteVideoView: {
-    margin: 2,
-    height: 300,
-    width: 370,
+    height: "50%",
+    width: "100%",
   },
   actionsContainer: {
     flexDirection: "row",
@@ -107,10 +94,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     padding: 20,
     marginTop: 20,
-    bottom: 10,
+    height: 100,
     width: 370,
-    backgroundColor: "#58C799",
-    borderRadius: 30,
+    backgroundColor: "#54D19E",
+    borderRadius: 40,
+    position: "absolute",
+    bottom: 20,
   },
   leaveButtonContainer: {
     width: 70,
@@ -126,13 +115,20 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
     borderRadius: 40,
-    backgroundColor: "#000000",
+    backgroundColor: "#000000CC",
   },
   buttonImage: {
     width: 30,
     height: 30,
     tintColor: "white",
+  },
+  emptyState: {
+    position: "absolute",
+    zIndex: 9,
+    backgroundColor: "white",
+    margin: 18,
+    padding: 12,
+    borderRadius: 16,
   },
 });
