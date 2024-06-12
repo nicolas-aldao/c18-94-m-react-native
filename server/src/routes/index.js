@@ -10,6 +10,7 @@ const availableAppointmentRouter = require("./availableAppointmentRouter");
 const patientMedicalHistoryRouter = require("./patientMedicalHistoryRouter");
 const hoursRouter = require("./hoursRouter");
 const loginRouter = require("./loginRouter");
+const videocallRouter = require("./videocallRouter");
 
 const router = Router();
 
@@ -25,5 +26,6 @@ router.use("/appointment", appointmentRouter);
 router.use("/available-appointment", availableAppointmentRouter);
 router.use("/medical-history", patientMedicalHistoryRouter);
 router.use("/hours", hoursRouter);
+router.use("/videocall", videocallRouter);
 
 module.exports = router;

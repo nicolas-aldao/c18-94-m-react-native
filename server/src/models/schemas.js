@@ -57,6 +57,12 @@ const patientMedicalHistorySchema = new Schema({
   treatment: { type: String, required: false },
 });
 
+const videocallSchema = new Schema({
+  appID: { type: String, required: true },
+  channel: { type: String, required: true },
+  token: { type: String, required: true },
+});
+
 // Model creation
 const User = mongoose.model("User", userSchema);
 const Doctor = mongoose.model("Doctor", doctorSchema);
@@ -71,6 +77,7 @@ const PatientMedicalHistory = mongoose.model(
   "PatientMedicalHistory",
   patientMedicalHistorySchema
 );
+const Videocall = mongoose.model("Videocall", videocallSchema);
 
 // Export models
 module.exports = {
@@ -81,4 +88,5 @@ module.exports = {
   AvailableAppointment,
   Appointment,
   PatientMedicalHistory,
+  Videocall,
 };
