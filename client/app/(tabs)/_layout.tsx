@@ -96,6 +96,12 @@ export default function TabLayout() {
           unmountOnBlur: true,
         }}
       />
+      <Tabs.Screen
+        name="other/index"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

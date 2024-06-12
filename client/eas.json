@@ -1,0 +1,37 @@
+{
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "MY_IP": "192.168.0.90"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "MY_IP": "192.168.0.90"
+      }
+    },
+    "preview3": {
+      "developmentClient": true,
+      "env": {
+        "MY_IP": "192.168.0.90"
+      }
+    },
+    "preview4": {
+      "distribution": "internal",
+      "env": {
+        "MY_IP": "192.168.0.90"
+      }
+    },
+    "production": {
+      "env": {
+        "MY_IP": "192.168.0.90"
+      }
+    }
+  }
+}
