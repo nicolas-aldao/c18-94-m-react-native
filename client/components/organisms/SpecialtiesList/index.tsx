@@ -47,7 +47,7 @@ export const SpecialtiesList: FC<SpecialtiesListProps> = ({
             ))}
         </ListContainer>
       )}
-      {specialties?.length === 0 && !errorMessage && (
+      {specialties?.length === 0 && !errorMessage && !isLoading && (
         <ThemedText>Aún no hay información</ThemedText>
       )}
       {errorMessage && <ThemedText>{GENERIC_MESSAGE_ERROR}</ThemedText>}
