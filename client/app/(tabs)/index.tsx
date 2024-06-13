@@ -14,7 +14,8 @@ export default function HomeScreen() {
 
   return (
     <>
-      <TopBar title={`Hola, ${user.name}!`} />
+      {/* TODO: NEEDS REFACTOR!! WE NEED FIRST AND LAST NAME IN USER SEPARATED*/}
+      <TopBar title={`Hola, John!`} />
       <CenteredView>
         {/* TODO: NEEDS REFACTOR!! */}
         <TitleSection>

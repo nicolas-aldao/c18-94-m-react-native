@@ -16,7 +16,7 @@ export const AppointmentDetail = ({
     name: "Juan Pérez",
     dni: "12345678",
     doctor: {
-      name: "Dr. Smith",
+      name: "Smith",
     },
     appointment: {
       date: "2024-06-15",

@@ -21,7 +21,7 @@ export const SpecialtiesList: FC<SpecialtiesListProps> = ({
     errorMessage,
   } = useFetch<Specialty[]>({
     serviceMethod: "getSpecialties",
-    initialData: [],
+    initialData: undefined,
   });
 
   return (

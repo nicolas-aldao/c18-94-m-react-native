@@ -35,15 +35,11 @@ export default function VideocallScreen() {
 
   useKeepAwake();
 
-  // const appId = "9e59ec728ba649dcb247e112747bccea";
-  // const channel = "call";
-  // const token =
-  //   "007eJxTYHgf4Mjj4DtVu1ph8u5SVSuhy0JX/G4+nGQj2VjCYnrEtFuBwTLV1DI12dzIIinRzMQyJTnJyMQ81dDQyNzEPCk5OTXxpFZWWkMgI8OxvkgGRigE8VkYkhNzchgYAIFtHSU=";
   const localUid = 0;
 
   const agoraEngineRef = useRef<IRtcEngine>(); // Referencia a la instancia de Agora
   const [isJoined, setIsJoined] = useState(false);
-  const [remoteUid, setRemoteUid] = useState(456); // Uid del usuario remoto
+  const [remoteUid, setRemoteUid] = useState(0); // Uid del usuario remoto
   const [isMute, setIsMute] = useState(false);
   const [message, setMessage] = useState(undefined);
 
@@ -58,7 +54,6 @@ export default function VideocallScreen() {
 
   const setupVideoSDKEngine = async () => {
     try {
-      // Llamamos a los permisos
       await getPermission();
 
       // Le damos el valor a nuestra instancia de Agora
@@ -97,7 +92,6 @@ export default function VideocallScreen() {
       // Si ya nos encontramos en la llamada, no hacemos nada.
       return;
     }
-
     // Dejamos que la instancia de AGORA nos asigne el canal y nos una.
     try {
       agoraEngineRef.current?.setChannelProfile(
@@ -116,11 +110,9 @@ export default function VideocallScreen() {
   const leave = () => {
     try {
       agoraEngineRef.current?.leaveChannel();
-
       // setRemoteUids([]);
       setIsJoined(false);
       setIsMute(false);
-
       // setRemoteUid(0);
     } catch (e) {
       console.log(e);
@@ -130,7 +122,6 @@ export default function VideocallScreen() {
   const muteMic = () => {
     try {
       agoraEngineRef.current?.muteLocalAudioStream(!isMute);
-
       setIsMute(!isMute);
     } catch (e) {
       console.log(e);

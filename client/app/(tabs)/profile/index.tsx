@@ -15,9 +15,12 @@ import {
   FirstOptionColumn,
   NameText,
   OptionView,
+  OtherOptionText,
+  OtherOptionsContainer,
   SecondColumn,
   SecondOptionColumn,
   SecondaryText,
+  StyledContainer,
   StyledView,
 } from "@/styles/profile/styles";
 
@@ -26,22 +29,24 @@ export default function ProfileScreen() {
 
   const optionList = [
     {
-      icon: <SimpleLineIcons name="user" size={24} color="black" />,
+      icon: <SimpleLineIcons name="user" size={20} color="black" />,
       text: "Datos Personales",
     },
     {
-      icon: <Octicons name="heart" size={24} color="black" />,
-      text: "Favoritos",
-    },
-    {
-      icon: <FontAwesome5 name="laptop-medical" size={24} color="black" />,
+      icon: <FontAwesome5 name="laptop-medical" size={20} color="black" />,
       text: "Datos Médicos",
     },
     {
-      icon: <FontAwesome5 name="address-card" size={24} color="black" />,
+      icon: <Octicons name="heart" size={20} color="black" />,
+      text: "Favoritos",
+    },
+    {
+      icon: <FontAwesome5 name="address-card" size={20} color="black" />,
       text: "Obra Social",
     },
   ];
+
+  const otherOptionsList = ["Política de privacidad", "Configuración", "Ayuda"];
 
   return (
     <>
@@ -62,22 +67,35 @@ export default function ProfileScreen() {
         </SecondColumn>
       </StyledView>
       <Spacer />
-      {optionList.map((item) => (
-        <>
-          <OptionView>
-            <FirstOptionColumn>
-              <CircleOption style={{ marginLeft: 10 }}>
-                {item.icon}
-              </CircleOption>
-              <ThemedText style={{ marginLeft: 10 }}>{item.text}</ThemedText>
-            </FirstOptionColumn>
-            <SecondOptionColumn>
-              <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
-            </SecondOptionColumn>
-          </OptionView>
-          <Spacer />
-        </>
-      ))}
+
+      <StyledContainer>
+        {optionList.map((item) => (
+          <>
+            <OptionView>
+              <FirstOptionColumn>
+                <CircleOption style={{ marginLeft: 10 }}>
+                  {item.icon}
+                </CircleOption>
+                <ThemedText style={{ marginLeft: 10 }}>{item.text}</ThemedText>
+              </FirstOptionColumn>
+              <SecondOptionColumn>
+                <MaterialIcons
+                  name="arrow-forward-ios"
+                  size={20}
+                  color="black"
+                />
+              </SecondOptionColumn>
+            </OptionView>
+            <Spacer />
+          </>
+        ))}
+        <Spacer height={10} />
+        <OtherOptionsContainer>
+          {otherOptionsList.map((item) => (
+            <OtherOptionText>{item}</OtherOptionText>
+          ))}
+        </OtherOptionsContainer>
+      </StyledContainer>
     </>
   );
 }

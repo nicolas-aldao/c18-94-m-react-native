@@ -40,20 +40,23 @@ export const SecondaryText = styled(ThemedText)`
   font-weight: 400;
 `;
 
+export const StyledContainer = styled(ThemedView)`
+  align-items: center;
+`;
+
 export const OptionView = styled(ThemedView)`
-  height: 80px;
-  width: 350px;
+  height: 60px;
+  width: 340px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  align-self: center;
   background-color: ${Colors.light.gray};
   border-radius: ${Styles.borderRadius.lg};
   padding: 6px;
 `;
 
 export const FirstOptionColumn = styled(ThemedView)`
-  height: 60px;
+  height: 50px;
   width: 220px;
   flex-direction: row;
   align-items: center;
@@ -62,7 +65,7 @@ export const FirstOptionColumn = styled(ThemedView)`
 `;
 
 export const SecondOptionColumn = styled(ThemedView)`
-  height: 60px;
+  height: 50px;
   width: 30px;
   justify-content: center;
   align-items: center;
@@ -70,10 +73,22 @@ export const SecondOptionColumn = styled(ThemedView)`
 `;
 
 export const CircleOption = styled(ThemedView)`
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   background-color: ${Colors.light.primary};
   border-radius: 100px;
   align-items: center;
   justify-content: center;
+`;
+
+export const OtherOptionsContainer = styled(ThemedView)`
+  margin-left: 6px;
+  width: 340px;
+`;
+
+export const OtherOptionText = styled(ThemedText)`
+  color: ${Colors.light.darkGrayText};
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
 `;

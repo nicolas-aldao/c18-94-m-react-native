@@ -32,7 +32,7 @@ export default function ActiveCall({
         />
       ) : (
         <View style={styles.emptyState}>
-          <Text>Esperando a que alguien se una….</Text>
+          <Text>Esperando a que alguien se una...</Text>
         </View>
       )}
       {/* Local user preview */}
@@ -96,13 +96,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     padding: 20,
-    marginTop: 20,
+    marginVertical: 25,
     height: 80,
     width: 320,
     backgroundColor: "#54D19E",
-    borderRadius: 40,
+    borderRadius: 30,
     position: "absolute",
-    bottom: 35,
   },
   leaveButtonContainer: {
     width: 55,
@@ -131,6 +130,7 @@ const styles = StyleSheet.create({
     zIndex: 9,
     backgroundColor: "white",
     margin: 18,
+    marginTop: 24,
     padding: 12,
     borderRadius: 16,
   },
