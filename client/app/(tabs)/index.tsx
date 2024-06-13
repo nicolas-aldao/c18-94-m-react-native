@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MedConnectContext } from "@/context";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { TopBar } from "@/components/molecules/TopBar";
@@ -6,21 +6,31 @@ import { UpcomingAppointmentsBox } from "@/components/organisms/UpcomingAppointm
 import { SpecialtiesList } from "@/components/organisms/SpecialtiesList";
 import { ThemedText } from "@/components/atoms/ThemedText";
 import { Link } from "expo-router";
-import { TitleSection } from "./styles";
+import { TitleSection } from "../../styles/index/styles";
 import { Spacer } from "@/components/atoms/Spacer";
+import { useFetch } from "@/hooks/useFetch";
 
 export default function HomeScreen() {
   const { user } = useContext(MedConnectContext);
+  const {
+    data: videocallCredentials,
+    isLoading,
+    errorMessage,
+  } = useFetch<any[]>({
+    serviceMethod: "getVideocallCredentials",
+  });
+
+  useEffect(() => {
+    console.log("videocallCredentials ", videocallCredentials);
+  }, [videocallCredentials]);
 
   return (
     <>
       <TopBar title={`Hola, ${user.name}!`} />
       <CenteredView>
         {/* TODO: NEEDS REFACTOR!! */}
-        <Link href="/videocall">
-          <ThemedText type="section">
-            <ThemedText>Press meye</ThemedText>
-          </ThemedText>
+        <Link href="/videocall/main">
+          <ThemedText type="section">Press meye</ThemedText>
         </Link>
         <Spacer height={10} />
         <TitleSection>

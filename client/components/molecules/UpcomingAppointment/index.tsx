@@ -23,7 +23,7 @@ export const UpcomingAppointment: React.FC<UpcomingAppointmentProps> = ({
   specialtyName,
 }) => {
   return (
-    <Link href="/appointment-detail">
+    <Link href="/videocall/main">
       <AppointmentContainer>
         <DateTimeText>
           {date}, {time}

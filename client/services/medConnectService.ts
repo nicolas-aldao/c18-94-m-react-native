@@ -8,6 +8,7 @@ import { MedicalHistory } from "@/types/medical-history";
 export class MedConnectService {
   private doctors: Doctor[] = [];
   private specialties: Specialty[] = [];
+  private videoCredentials: any;
   private availableAppointments: AvailableAppointments[] = [];
   private upcomingAppointmentsByIdPatient: ScheduledAppointmentsByIdPatient[] =
     [];
@@ -68,5 +69,12 @@ export class MedConnectService {
       (await this.medConnectProvider.getMedicalHistoryByIdPatient(id)) ?? [];
 
     return this.medicalHistories;
+  }
+
+  async getVideocallCredentials() {
+    this.videoCredentials =
+      (await this.medConnectProvider.getVideocallCredentials()) ?? [];
+
+    return this.videoCredentials;
   }
 }

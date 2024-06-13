@@ -4,7 +4,12 @@ import { useFetch } from "@/hooks/useFetch";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { Spacer } from "@/components/atoms/Spacer";
 import { TopBar } from "@/components/molecules/TopBar";
-import { HeaderText, SectionText, StyledText, StyledView } from "./styles";
+import {
+  HeaderText,
+  SectionText,
+  StyledText,
+  StyledView,
+} from "../../styles/my-medical-history/styles";
 
 export default function MyMedicalHistoryScreen() {
   const {

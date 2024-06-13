@@ -161,4 +161,23 @@ export class WebApiService implements MedConnectProvider {
       }
     }
   };
+
+  getVideocallCredentials = async (): Promise<any[] | undefined> => {
+    try {
+      const res = await axios.get(`${API_URL}/api/videocall`);
+      if (res) {
+        return responseMiddleware(res?.data);
+      } else {
+        throw new Error("error!");
+      }
+    } catch (err: any) {
+      if (err.message === "Network Error") {
+        throw new Error(
+          "Error de configuración de Axios, revisar ip o archivo constants"
+        );
+      } else {
+        throw new Error("Error!");
+      }
+    }
+  };
 }

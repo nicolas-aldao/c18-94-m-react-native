@@ -446,4 +446,13 @@ export class MockService implements MedConnectProvider {
     };
     return responseMiddleware(res);
   };
+
+  getVideocallCredentials = async (): Promise<any | undefined> => {
+    await this.wait();
+    const res = {
+      status: 200,
+      data: [],
+    };
+    return responseMiddleware(res);
+  };
 }

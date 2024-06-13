@@ -23,4 +23,5 @@ export abstract class MedConnectProvider {
   abstract getMedicalHistoryByIdPatient(
     id: string
   ): Promise<MedicalHistory[] | undefined>;
+  abstract getVideocallCredentials(): Promise<any | undefined>;
 }

@@ -16,7 +16,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index/index"
+        name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => (
@@ -42,7 +42,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="my-medical-history/index"
+        name="my-medical-history"
         options={{
           title: "Mi historial",
           tabBarIcon: ({ color, focused }) => (
@@ -51,7 +51,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="my-appointments/index"
+        name="my-appointments"
         options={{
           title: "Mis Turnos",
           tabBarIcon: ({ color, focused }) => (
@@ -96,13 +96,13 @@ export default function TabLayout() {
           unmountOnBlur: true,
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="videocall/index"
         options={{
           href: null,
           unmountOnBlur: true,
         }}
-      />
+      /> */}
     </Tabs>
   );
 }

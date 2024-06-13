@@ -1,7 +1,5 @@
-// import { MY_IP } from '@env';
-
-// Ingresar dirección IP de tu pc http://(TU DIRECCION DE IP):3000
-export const API_URL = `http://${process.env.MY_IP}:3000`;
+//export const API_URL = `http://${process.env.MY_IP}:3000`;
+export const API_URL = "https://c18-94-m-react-native.vercel.app";
 
 export const GENERIC_MESSAGE_ERROR = "Ha ocurrido un error, intente más tarde.";
 

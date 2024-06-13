@@ -40,6 +40,7 @@ export const useFetch = <T>({
         }
       } else {
         response = await medConnectService[serviceMethod](param);
+        console.log("🚀 ~ fetchData ~ response:", response);
       }
       setData(response);
     } catch (error) {

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { TopBar } from "@/components/molecules/TopBar";
 import { CenteredView } from "@/components/containers/CenteredView";
 import { ThemedText } from "@/components/atoms/ThemedText";

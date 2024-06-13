@@ -1,36 +1,51 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { useKeepAwake } from "@sayem314/react-native-keep-awake";
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View, PermissionsAndroid, Platform } from "react-native";
-import {
-  ClientRoleType,
-  createAgoraRtcEngine,
-  IRtcEngine,
-  ChannelProfileType,
-} from "react-native-agora";
 import ActiveCall from "@/components/ActiveCall";
-import InactiveoCall from "@/components/InactiveCall";
+import { AppointmentDetail } from "@/components/organisms/AppointmentDetail";
+import { useFetch } from "@/hooks/useFetch";
+import { useKeepAwake } from "@sayem314/react-native-keep-awake";
+import { useEffect, useRef, useState } from "react";
+import { PermissionsAndroid, Platform, View, StyleSheet } from "react-native";
+import createAgoraRtcEngine, {
+  ChannelProfileType,
+  ClientRoleType,
+  IRtcEngine,
+} from "react-native-agora";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function VideocallScreen() {
+  const [appId, setAppId] = useState(undefined);
+  const [channel, setChannel] = useState(undefined);
+  const [token, setToken] = useState(undefined);
+
+  const {
+    data: videocallCredentials,
+    isLoading,
+    errorMessage,
+  } = useFetch<any[]>({
+    serviceMethod: "getVideocallCredentials",
+    initialData: undefined,
+  });
+
+  useEffect(() => {
+    if (videocallCredentials) {
+      setAppId(videocallCredentials[0]?.appID);
+      setChannel(videocallCredentials[0]?.channel);
+      setToken(videocallCredentials[0]?.token);
+    }
+  }, [videocallCredentials]);
+
   useKeepAwake();
 
-  const appId = "9e59ec728ba649dcb247e112747bccea";
-  const channel = "medConnect";
-  const token =
-    "007eJxTYJj9NUKZ22qOcnycziRGsZW5NqcE8g5eenS4+UXMvtMGZUUKDJapppapyeZGFkmJZiaWKclJRibmqYaGRuYm5knJyamJ0sKxaQ2BjAynEuVYGBkgEMTnYshNTXHOz8tLTS5hYAAAosYgNg==";
+  // const appId = "9e59ec728ba649dcb247e112747bccea";
+  // const channel = "call";
+  // const token =
+  //   "007eJxTYHgf4Mjj4DtVu1ph8u5SVSuhy0JX/G4+nGQj2VjCYnrEtFuBwTLV1DI12dzIIinRzMQyJTnJyMQ81dDQyNzEPCk5OTXxpFZWWkMgI8OxvkgGRigE8VkYkhNzchgYAIFtHSU=";
   const localUid = 0;
 
   const agoraEngineRef = useRef<IRtcEngine>(); // Referencia a la instancia de Agora
   const [isJoined, setIsJoined] = useState(false);
   const [remoteUid, setRemoteUid] = useState(456); // Uid del usuario remoto
-  const [isMute, setIsMute] = useState(false); // Indica si el usuario local se unio al canal
+  const [isMute, setIsMute] = useState(false);
+  const [message, setMessage] = useState(undefined);
 
   const getPermission = async () => {
     if (Platform.OS === "android") {
@@ -80,10 +95,11 @@ export default function VideocallScreen() {
   const join = async () => {
     // console.log("🚀 ~ join ~ ")
     if (isJoined) {
+      // Si ya nos encontramos en la llamada, no hacemos nada.
       return;
     }
 
-    // La instancia de AGORA nos asigne el canal y nos una.
+    // Dejamos que la instancia de AGORA nos asigne el canal y nos una.
     try {
       agoraEngineRef.current?.setChannelProfile(
         ChannelProfileType.ChannelProfileCommunication
@@ -94,7 +110,6 @@ export default function VideocallScreen() {
       });
       // setIsJoined(true);
     } catch (e) {
-      // console.log("🚀 ~ join ~ e:", e)
       console.log(e);
     }
   };
@@ -103,6 +118,7 @@ export default function VideocallScreen() {
     try {
       agoraEngineRef.current?.leaveChannel();
 
+      // setRemoteUids([]);
       setIsJoined(false);
       setIsMute(false);
 
@@ -132,31 +148,30 @@ export default function VideocallScreen() {
 
   useEffect(() => {
     // Inicializamos el motor de Agora cuando inicia la app
-    setupVideoSDKEngine();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    appId && setupVideoSDKEngine();
 
-  useEffect(() => {
-    // console.log("🚀 ~ App ~ isJoined:", isJoined)
-  }, [isJoined]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appId]);
 
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        {isJoined ? (
-          <ActiveCall
-            localUid={localUid}
-            remoteUid={remoteUid}
-            isMute={isMute}
-            onMuteMicPress={muteMic}
-            onSwitchCameraPress={switchCamera}
-            onLeavePress={leave}
-          />
-        ) : (
-          <InactiveoCall onJoinChannelPress={join} />
-        )}
-      </View>
-    </SafeAreaProvider>
+    <>
+      <SafeAreaProvider>
+        <View style={styles.container}>
+          {isJoined ? (
+            <ActiveCall
+              localUid={localUid}
+              remoteUid={remoteUid}
+              isMute={isMute}
+              onMuteMicPress={muteMic}
+              onSwitchCameraPress={switchCamera}
+              onLeavePress={leave}
+            />
+          ) : (
+            <AppointmentDetail onJoinChannelPress={join} />
+          )}
+        </View>
+      </SafeAreaProvider>
+    </>
   );
 }
 

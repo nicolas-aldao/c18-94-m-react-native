@@ -15,7 +15,10 @@ import { UpcomingMedicalAppointments } from "@/components/organisms/DoctorItemRo
 import { MedicalAppointmentTemplate } from "@/components/organisms/DoctorItemRow/Common/MedicalAppointmentTemplate.tsx";
 import { DoctorItemRowSkeleton } from "@/components/organisms/DoctorItemRow/skeleton";
 import { EmptyStateText } from "@/components/organisms/UpcomingAppointmentsBox/styles";
-import { EmptyStateContainer, StyledView } from "./styles";
+import {
+  EmptyStateContainer,
+  StyledView,
+} from "../../styles/my-appointments/styles";
 
 export default function MyAppointmentsScreen() {
   const { user } = useContext(MedConnectContext);
