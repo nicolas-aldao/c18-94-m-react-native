@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { MedConnectContext } from "@/context";
 import { DefaultTheme } from "@/constants/Styles";
+import { Button } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -39,6 +40,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <MedConnectContext.Provider value={{ user, setUser }}>
         <Stack>
+          <Stack.Screen name="videocall" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>

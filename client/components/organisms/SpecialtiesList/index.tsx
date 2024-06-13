@@ -6,6 +6,7 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 import { SpecialtyBox } from "@/components/atoms/SpecialtyBox";
 import { SpecialtyBoxSkeleton } from "@/components/atoms/SpecialtyBox/loading";
 import { ListContainer, StyledView } from "./styles";
+import { GENERIC_MESSAGE_ERROR } from "@/constants";
 
 interface SpecialtiesListProps {
   maxItemsToRender?: number;
@@ -46,10 +47,10 @@ export const SpecialtiesList: FC<SpecialtiesListProps> = ({
             ))}
         </ListContainer>
       )}
-      {specialties?.length === 0 && !isLoading && (
+      {specialties?.length === 0 && !errorMessage && (
         <ThemedText>Aún no hay información</ThemedText>
       )}
-      {errorMessage && <ThemedText>{errorMessage}</ThemedText>}
+      {errorMessage && <ThemedText>{GENERIC_MESSAGE_ERROR}</ThemedText>}
     </StyledView>
   );
 };

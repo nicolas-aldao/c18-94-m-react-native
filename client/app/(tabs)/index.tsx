@@ -17,10 +17,6 @@ export default function HomeScreen() {
       <TopBar title={`Hola, ${user.name}!`} />
       <CenteredView>
         {/* TODO: NEEDS REFACTOR!! */}
-        <Link href="/videocall/main">
-          <ThemedText type="section">Press meye</ThemedText>
-        </Link>
-        <Spacer height={10} />
         <TitleSection>
           <ThemedText type="section">Mis turnos</ThemedText>
           <Link href="/my-appointments">
