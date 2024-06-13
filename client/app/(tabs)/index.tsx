@@ -8,21 +8,9 @@ import { ThemedText } from "@/components/atoms/ThemedText";
 import { Link } from "expo-router";
 import { TitleSection } from "../../styles/index/styles";
 import { Spacer } from "@/components/atoms/Spacer";
-import { useFetch } from "@/hooks/useFetch";
 
 export default function HomeScreen() {
   const { user } = useContext(MedConnectContext);
-  const {
-    data: videocallCredentials,
-    isLoading,
-    errorMessage,
-  } = useFetch<any[]>({
-    serviceMethod: "getVideocallCredentials",
-  });
-
-  useEffect(() => {
-    console.log("videocallCredentials ", videocallCredentials);
-  }, [videocallCredentials]);
 
   return (
     <>

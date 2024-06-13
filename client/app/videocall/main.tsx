@@ -93,7 +93,6 @@ export default function VideocallScreen() {
   };
 
   const join = async () => {
-    // console.log("🚀 ~ join ~ ")
     if (isJoined) {
       // Si ya nos encontramos en la llamada, no hacemos nada.
       return;

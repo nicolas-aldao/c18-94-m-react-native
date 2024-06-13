@@ -3,6 +3,9 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { RtcSurfaceView } from "react-native-agora";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+{
+  /* TODO: NEEDS REFACTOR!! */
+}
 export default function ActiveCall({
   localUid,
   remoteUid,
@@ -94,16 +97,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     padding: 20,
     marginTop: 20,
-    height: 100,
-    width: 370,
+    height: 80,
+    width: 320,
     backgroundColor: "#54D19E",
     borderRadius: 40,
     position: "absolute",
-    bottom: 20,
+    bottom: 35,
   },
   leaveButtonContainer: {
-    width: 70,
-    height: 70,
+    width: 55,
+    height: 55,
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
@@ -111,16 +114,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#B03939",
   },
   actionButtonContainer: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 40,
     backgroundColor: "#000000CC",
   },
   buttonImage: {
-    width: 30,
-    height: 30,
+    width: 22,
+    height: 22,
     tintColor: "white",
   },
   emptyState: {
