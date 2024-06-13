@@ -1,3 +1,7 @@
+<div style="text-align: center;">
+  <img src="https://github.com/No-Country/c18-94-m-react-native/assets/81888574/e759eb41-1736-4e3d-ac8d-0c4dbe6af1f0" alt="Logo" />
+</div>
+
 # 📱 TeleMedicina MVP para No Country
 
 ¡Bienvenidos a medConnect!
