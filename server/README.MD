@@ -27,6 +27,23 @@ devuelve todas las especialidades
 recibe por query "specialtyId" para el ID de specialty y "name" para nombre de doctor
 en caso de no recibir "name", devuelve todos los doctores por especialidad
 
+## POST DOCTOR
+
+/api/doctor
+
+{
+"email": "chad@example.com",
+"password": "securepassword123",
+"dni": "12345678",
+"name": "Chad Gilbert",
+"address": "123 Main St, Springfield",
+"birthDate": "1990-01-01",
+"gender": "male",
+"nationality": "American",
+"specialtyId": "665fab408177399fde1a0375",
+"profile_pic": "https://www.figma.com/component/84b4a3264661952ea89fc34693afae90f7ae5067/thumbnail?ver=2259%3A574&fuid=1375887789832720451"
+}
+
 ## GET AVAILABLE APPOINTMENTS BY DOCTOR ID / TAKEN
 
 /api/available-appointment?doctorId=665fabe08177399fde1a037c&taken=false
