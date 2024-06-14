@@ -35,7 +35,7 @@ export class WebApiService implements MedConnectProvider {
     try {
       const res = await axios.get(`${API_URL}/api/doctor?specialtyId=${id}`);
       if (res) {
-        return responseMiddleware(res);
+        return responseMiddleware(res?.data);
       } else {
         throw new Error("error!");
       }
