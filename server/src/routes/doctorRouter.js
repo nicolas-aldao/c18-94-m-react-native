@@ -3,26 +3,21 @@ const { Doctor, Specialty, User } = require("../models/schemas");
 
 const doctorRouter = Router();
 
-doctorRouter.get("/", async (req, res, next) => {
-  try {
-    const foundDoctors = await Doctor.find()
-      .populate("specialty")
-      .populate("user");
-
-    res.status(200).json(foundDoctors);
-  } catch (error) {
-    next(error);
-  }
-});
-
 // get doctors with filters
 doctorRouter.get("/", async (req, res, next) => {
   const { specialtyId, name } = req.query;
+  let foundDoctors;
+
   try {
-    const foundSpecialty = await Specialty.findById(specialtyId);
-    const foundDoctors = await Doctor.find({ specialty: foundSpecialty._id })
-      .populate("specialty")
-      .populate("user");
+    if (specialtyId) {
+      const foundSpecialty = await Specialty.findById(specialtyId);
+      foundDoctors = await Doctor.find({ specialty: foundSpecialty._id })
+        .populate("specialty")
+        .populate("user");
+    } else {
+      foundDoctors = await Doctor.find().populate("specialty").populate("user");
+    }
+
     if (name) {
       const filteredDoctors = foundDoctors.filter(
         (doctor) => doctor.user.name.toLowerCase() === name.toLowerCase()
