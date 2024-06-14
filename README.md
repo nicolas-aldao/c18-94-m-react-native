@@ -1,6 +1,11 @@
 <div align="center">
 <img alt="Logo de aplicación de telemedicina" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/733a2286-d4a5-44b4-8797-1d5dad664847" width="180">
 
+# MVP de telemedicina para No Country
+
+<div align="center">
+<img alt="Logo de aplicación de telemedicina" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/733a2286-d4a5-44b4-8797-1d5dad664847" width="180">
+
 ## MVP de telemedicina para No Country
 
 </div>
@@ -25,9 +30,13 @@ Diseño UX/UI: Delfina Rios
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://delfinarios.myportfolio.com/work)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/delfinarios)
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://delfinarios.myportfolio.com/work)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/delfinarios)
 
 Backend/Base de Datos: Nicolás Florentin
 
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://porfolio-nicolas-florentin.vercel.app)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nflorentin)
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://porfolio-nicolas-florentin.vercel.app)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nflorentin)
 
@@ -72,6 +81,17 @@ Feedback y correcciones.
 Despliegue
 
 Planificación de futuras iteraciones que incluirán el registro y login de usuarios.
+
+# Screenshots
+
+<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+  <img alt="Logo de aplicación de telemedicina 1" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/0d6f03e7-b761-4032-905a-1c52f1ba9046" />
+  <img alt="Logo de aplicación de telemedicina 2" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/b0460ec0-0db4-45ef-b9e8-bacb0f877ef8" />
+  <img alt="Logo de aplicación de telemedicina 3" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/ab51454a-f2d2-418a-8ddf-9107e9cf5b99" />
+  <img alt="Logo de aplicación de telemedicina 4" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/93ba340a-f275-4dc2-939d-669baeea39c6" />
+</div>
+
+# 🔗 Referencias y Links
 
 ## Screenshots y Video
 
