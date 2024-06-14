@@ -1,11 +1,6 @@
 <div align="center">
 <img alt="Logo de aplicación de telemedicina" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/733a2286-d4a5-44b4-8797-1d5dad664847" width="180">
 
-# MVP de telemedicina para No Country
-
-<div align="center">
-<img alt="Logo de aplicación de telemedicina" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/733a2286-d4a5-44b4-8797-1d5dad664847" width="180">
-
 ## MVP de telemedicina para No Country
 
 </div>
