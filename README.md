@@ -13,9 +13,9 @@
 
 ## 💻 Stack Tecnológico
 
-- Frontend: React Native con Expo
-- Backend: Node.js con Express
-- Base de Datos: MongoDB
+- Frontend: React Native con Expo, estilos con Styled Components, Typescript, con buenas prácticas CLEAN CODE y principios SOLID.
+- Backend: Node.js con Express, API REST.
+- Base de Datos: MongoDB en plataforma ATLAS
 - Estructura del repositorio: Monorepo
 - Plataforma: Android
 
@@ -25,13 +25,9 @@ Diseño UX/UI: Delfina Rios
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://delfinarios.myportfolio.com/work)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/delfinarios)
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://delfinarios.myportfolio.com/work)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/delfinarios)
 
 Backend/Base de Datos: Nicolás Florentin
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://porfolio-nicolas-florentin.vercel.app)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nflorentin)
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://porfolio-nicolas-florentin.vercel.app)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nflorentin)
 
@@ -45,48 +41,6 @@ Frontend: Nicolás Aldao
 1#: Como paciente, quiero poder agendar consultas virtuales con médicos para recibir atención médica sin salir de casa.
 
 2# Como paciente, quiero poder ver mis registros médicos que el profesional de salud llena después de cada atención.
-
-## 📌 Paso a Paso del Proyecto
-
-Inicio del Proyecto
-
-Configuramos una estructura de carpetas de monorepo.
-Configuración del monorepo.
-Configuración del entorno de desarrollo (React Native con Expo, Node.js, MongoDB).
-
-Diseño UX/UI
-
-Delfina Rios crea los mockups y prototipos en Figma.
-Revisión y ajustes basados en feedback del equipo.
-
-Desarrollo del Frontend
-Nicolás Aldao desarrolla la interfaz de usuario utilizando React Native con Expo.
-Implementación de la navegación entre pantallas.
-
-Desarrollo del Backend
-Nicolás Florentin configura el servidor en Node.js y la base de datos en MongoDB.
-Desarrollo de endpoints para la gestión de usuarios, reservas y historial médico.
-
-Configuración de la base de datos para almacenar y acceder a los historiales médicos.
-Desarrollo de interfaces para que los médicos accedan a los historiales durante las consultas.
-Pruebas y QA
-
-Pruebas internas para asegurar el correcto funcionamiento de todas las funcionalidades básicas.
-Feedback y correcciones.
-Despliegue
-
-Planificación de futuras iteraciones que incluirán el registro y login de usuarios.
-
-# Screenshots
-
-<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
-  <img alt="Logo de aplicación de telemedicina 1" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/0d6f03e7-b761-4032-905a-1c52f1ba9046" />
-  <img alt="Logo de aplicación de telemedicina 2" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/b0460ec0-0db4-45ef-b9e8-bacb0f877ef8" />
-  <img alt="Logo de aplicación de telemedicina 3" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/ab51454a-f2d2-418a-8ddf-9107e9cf5b99" />
-  <img alt="Logo de aplicación de telemedicina 4" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/93ba340a-f275-4dc2-939d-669baeea39c6" />
-</div>
-
-# 🔗 Referencias y Links
 
 ## Screenshots y Video
 
