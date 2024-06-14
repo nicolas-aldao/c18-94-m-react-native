@@ -9,7 +9,7 @@ videocallRouter.get("/", async (req, res, next) => {
       appID: "9e59ec728ba649dcb247e112747bccea",
       channel: "call",
       token:
-        "007eJxTYHgf4Mjj4DtVu1ph8u5SVSuhy0JX/G4+nGQj2VjCYnrEtFuBwTLV1DI12dzIIinRzMQyJTnJyMQ81dDQyNzEPCk5OTXxpFZWWkMgI8OxvkgGRigE8VkYkhNzchgYAIFtHSU=",
+        "007eJxTYFh783LiHXFfzX0x6SaKYRdNREOEDc4vZTzF21JjLhl6M0CBwTLV1DI12dzIIinRzMQyJTnJyMQ81dDQyNzEPCk5OTWxbUp2WkMgI0PB30esjAwQCOKzMCQn5uQwMAAAsGMeDA==",
     };
     req.data = videocallInfo;
     req.statusCode = 200;
