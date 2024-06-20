@@ -54,14 +54,14 @@ Recibe doctorId y taken para determinar si los turnos que nos vamos a traer est√
 /api/available-appointment
 Ejemplo de estructura body para agregar un horario de turno disponible:
 
-\`\`\`json
+```javascript
 {
     "doctorId": "665fabe08177399fde1a037c",
     "date": "2024-06-10",
     "timeId": 1,
     "taken": false
 }
-\`\`\`
+```
 
 ## GET APPOINTMENTS BY PATIENT ID / FINISHED
 
