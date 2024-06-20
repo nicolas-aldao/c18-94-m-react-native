@@ -1,8 +1,9 @@
 ## POST PATIENT
 
-/api/patient
-Ejemplo de estructura body:
+/api/patient  
+Ejemplo de estructura body:  
 
+```javascript
 {
 "email": "correo@example.com",
 "password": "contraseña123",
@@ -15,6 +16,7 @@ Ejemplo de estructura body:
 "socialSecurityNumber": "123456789012"
 "profile_pic": ""
 }
+```
 
 ## GET ALL SPECIALTIES
 
@@ -23,7 +25,7 @@ devuelve todas las especialidades
 
 ## GET DOCTOR BY NAME / SPECIALTY_ID
 
-/api/doctor?specialtyId=664e7e8fa853520082ed6101&name=andres
+/api/doctor?specialtyId=664e7e8fa853520082ed6101&name=andres  
 recibe por query "specialtyId" para el ID de specialty y "name" para nombre de doctor
 en caso de no recibir "name", devuelve todos los doctores por especialidad
 
@@ -31,22 +33,24 @@ en caso de no recibir "name", devuelve todos los doctores por especialidad
 
 /api/doctor
 
+```javascript
 {
-"email": "chad@example.com",
-"password": "securepassword123",
-"dni": "12345678",
-"name": "Chad Gilbert",
-"address": "123 Main St, Springfield",
-"birthDate": "1990-01-01",
-"gender": "male",
-"nationality": "American",
-"specialtyId": "665fab408177399fde1a0375",
-"profile_pic": "https://www.figma.com/component/84b4a3264661952ea89fc34693afae90f7ae5067/thumbnail?ver=2259%3A574&fuid=1375887789832720451"
+    "email": "chad@example.com",
+    "password": "securepassword123",
+    "dni": "12345678",
+    "name": "Chad Gilbert",
+    "address": "123 Main St, Springfield",
+    "birthDate": "1990-01-01",
+    "gender": "male",
+    "nationality": "American",
+    "specialtyId": "665fab408177399fde1a0375",
+    "profile_pic": "https://www.figma.com/component/84b4a3264661952ea89fc34693afae90f7ae5067/thumbnail?ver=2259%3A574&fuid=1375887789832720451"
 }
+```
 
 ## GET AVAILABLE APPOINTMENTS BY DOCTOR ID / TAKEN
 
-/api/available-appointment?doctorId=665fabe08177399fde1a037c&taken=false
+/api/available-appointment?doctorId=665fabe08177399fde1a037c&taken=false  
 Recibe doctorId y taken para determinar si los turnos que nos vamos a traer están disponibles o no, siendo su valor true o false según necesitemos.
 
 ## POST AVAILABLE APPOINTMENT
@@ -67,14 +71,16 @@ Ejemplo de estructura body para agregar un horario de turno disponible:
 
 /api/appointment?patientId=333333333333333333333333&finished=false
 
-## DELETE ALL APPOINTMENTS
+### DELETE ALL APPOINTMENTS
 
 /api/appointment
 
-## POST PATIENT MEDICAL HISTORY
+### POST PATIENT MEDICAL HISTORY
 
-/api/medical-history
-Ejemplo de estructura body:
+/api/medical-history  
+Ejemplo de estructura body:  
+
+```javascript
 {
 "patientId": "6666458967d6e7ebe8427ea1",
 "doctorId": "665fa3caa906940295a5ed86",
@@ -83,3 +89,4 @@ Ejemplo de estructura body:
 "control": "Control de rutina",
 "treatment": "pastillas por semana"
 }
+```
