@@ -51,8 +51,8 @@ Recibe doctorId y taken para determinar si los turnos que nos vamos a traer est√
 
 ## POST AVAILABLE APPOINTMENT
 
-/api/available-appointment
-Ejemplo de estructura body para agregar un horario de turno disponible:
+/api/available-appointment  
+Ejemplo de estructura body para agregar un horario de turno disponible:  
 
 ```javascript
 {
