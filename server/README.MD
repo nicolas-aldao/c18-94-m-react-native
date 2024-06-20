@@ -1,6 +1,8 @@
-## POST PATIENT
+### POST PATIENT
 
-/api/patient  
+```javascript
+/api/patient 
+```   
 Ejemplo de estructura body:  
 
 ```javascript
@@ -18,20 +20,28 @@ Ejemplo de estructura body:
 }
 ```
 
-## GET ALL SPECIALTIES
+### GET ALL SPECIALTIES  
 
+```javascript
 /api/specialty
+```  
+
 devuelve todas las especialidades
 
-## GET DOCTOR BY NAME / SPECIALTY_ID
+### GET DOCTOR BY NAME / SPECIALTY_ID
 
+```javascript
 /api/doctor?specialtyId=664e7e8fa853520082ed6101&name=andres  
-recibe por query "specialtyId" para el ID de specialty y "name" para nombre de doctor
+```
+
+Recibe por query "specialtyId" para el ID de specialty y "name" para nombre de doctor
 en caso de no recibir "name", devuelve todos los doctores por especialidad
 
-## POST DOCTOR
+### POST DOCTOR
 
+```javascript
 /api/doctor
+```  
 
 ```javascript
 {
@@ -48,14 +58,19 @@ en caso de no recibir "name", devuelve todos los doctores por especialidad
 }
 ```
 
-## GET AVAILABLE APPOINTMENTS BY DOCTOR ID / TAKEN
+### GET AVAILABLE APPOINTMENTS BY DOCTOR ID / TAKEN  
 
+```javascript
 /api/available-appointment?doctorId=665fabe08177399fde1a037c&taken=false  
+```  
 Recibe doctorId y taken para determinar si los turnos que nos vamos a traer están disponibles o no, siendo su valor true o false según necesitemos.
 
-## POST AVAILABLE APPOINTMENT
+### POST AVAILABLE APPOINTMENT
 
+```javascript
 /api/available-appointment  
+```
+
 Ejemplo de estructura body para agregar un horario de turno disponible:  
 
 ```javascript
@@ -67,17 +82,23 @@ Ejemplo de estructura body para agregar un horario de turno disponible:
 }
 ```
 
-## GET APPOINTMENTS BY PATIENT ID / FINISHED
+### GET APPOINTMENTS BY PATIENT ID / FINISHED  
 
-/api/appointment?patientId=333333333333333333333333&finished=false
+```javascript
+/api/appointment?patientId=65b6d2b2e4ae979c61ad9afc&finished=false
+```
 
-### DELETE ALL APPOINTMENTS
+### DELETE ALL APPOINTMENTS  
 
+```javascript
 /api/appointment
+```
 
-### POST PATIENT MEDICAL HISTORY
+### POST PATIENT MEDICAL HISTORY  
 
-/api/medical-history  
+```javascript
+/api/medical-history
+```  
 Ejemplo de estructura body:  
 
 ```javascript
