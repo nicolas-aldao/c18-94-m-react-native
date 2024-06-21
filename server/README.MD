@@ -1,3 +1,7 @@
+### Diagrama de base de datos
+
+<img width="528" alt="diagrama" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/b16c615b-a07a-4c93-9a64-e9ed45c01a2a">
+
 ### POST PATIENT
 
 ```javascript
