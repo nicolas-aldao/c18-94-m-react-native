@@ -25,9 +25,10 @@
   <img alt="Logo de aplicación de telemedicina 2" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/b0460ec0-0db4-45ef-b9e8-bacb0f877ef8" />
   <img alt="Logo de aplicación de telemedicina 3" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/ab51454a-f2d2-418a-8ddf-9107e9cf5b99" />
   <img alt="Logo de aplicación de telemedicina 4" style="margin: 18px;" src="https://github.com/nicolas-aldao/c18-94-m-react-native/assets/68720883/93ba340a-f275-4dc2-939d-669baeea39c6" />
-</div>
+</div>  
 
-[![Watch the video](https://github-production-user-asset-6210df.s3.amazonaws.com/68720883/342078655-e986169c-2807-4c11-9076-eaf3f6059089.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240623%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240623T153744Z&X-Amz-Expires=300&X-Amz-Signature=9746fafd1dd517ed5c9bf689a65a047c3efd06b031d64e1a5c6ab3aad7327ff7&X-Amz-SignedHeaders=host&actor_id=68720883&key_id=0&repo_id=807213350)](https://www.youtube.com/watch?v=rWuJkPa_pAs)
+
+[Watch the video on YouTube](https://youtu.be/rWuJkPa_pAs)
 
 <!-- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Mirá la demo de nuestra app en video</a> -->
 
