@@ -28,7 +28,7 @@
 </div>  
 
 
-[Watch the video on YouTube](https://youtu.be/rWuJkPa_pAs)
+[Mirar video de la demo en YouTube](https://youtu.be/rWuJkPa_pAs)
 
 <!-- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Mirá la demo de nuestra app en video</a> -->
 
